@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		581C4BC5268A3CD6004AE62D /* StockSearchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C4BC4268A3CD6004AE62D /* StockSearchList.swift */; };
+		58A03FB8268BA80F005E1E67 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A03FB7268BA80F005E1E67 /* SearchBar.swift */; };
 		58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64A126826E9100994D66 /* ValueInvestorApp.swift */; };
 		58CC64A426826E9100994D66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64A326826E9100994D66 /* ContentView.swift */; };
 		58CC64A626826E9200994D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58CC64A526826E9200994D66 /* Assets.xcassets */; };
 		58CC64A926826E9200994D66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58CC64A826826E9200994D66 /* Preview Assets.xcassets */; };
 		58CC64B426826E9200994D66 /* ValueInvestorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64B326826E9200994D66 /* ValueInvestorTests.swift */; };
 		58CC64BF26826E9200994D66 /* ValueInvestorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */; };
+		58EC29E3268EC645006FAFAE /* SearchNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EC29E2268EC645006FAFAE /* SearchNavigation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +36,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		581C4BC4268A3CD6004AE62D /* StockSearchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockSearchList.swift; sourceTree = "<group>"; };
+		58A03FB7268BA80F005E1E67 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		58CC649E26826E9100994D66 /* ValueInvestor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ValueInvestor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CC64A126826E9100994D66 /* ValueInvestorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueInvestorApp.swift; sourceTree = "<group>"; };
 		58CC64A326826E9100994D66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -45,6 +50,7 @@
 		58CC64BA26826E9200994D66 /* ValueInvestorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValueInvestorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueInvestorUITests.swift; sourceTree = "<group>"; };
 		58CC64C026826E9200994D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58EC29E2268EC645006FAFAE /* SearchNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchNavigation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +103,9 @@
 			children = (
 				58CC64A126826E9100994D66 /* ValueInvestorApp.swift */,
 				58CC64A326826E9100994D66 /* ContentView.swift */,
+				581C4BC4268A3CD6004AE62D /* StockSearchList.swift */,
+				58A03FB7268BA80F005E1E67 /* SearchBar.swift */,
+				58EC29E2268EC645006FAFAE /* SearchNavigation.swift */,
 				58CC64A526826E9200994D66 /* Assets.xcassets */,
 				58CC64AA26826E9200994D66 /* Info.plist */,
 				58CC64A726826E9200994D66 /* Preview Content */,
@@ -259,6 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				581C4BC5268A3CD6004AE62D /* StockSearchList.swift in Sources */,
+				58A03FB8268BA80F005E1E67 /* SearchBar.swift in Sources */,
+				58EC29E3268EC645006FAFAE /* SearchNavigation.swift in Sources */,
 				58CC64A426826E9100994D66 /* ContentView.swift in Sources */,
 				58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */,
 			);
