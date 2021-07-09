@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct StockSearchList: View {
+struct WatchListView: View {
     
     @State private var searchText : String = ""
     @State private var searchTextFocuse : Bool = true
@@ -30,22 +30,39 @@ struct StockSearchList: View {
         VStack {
             
             SearchNavigation(text: $searchText, search: {}, cancel: {}) {
-                List(0 ..< 5) { item in
+                
+                List(0 ..< 30) { item in
+                        
                     NavigationLink(
 
                         destination: Text("Destination"),
                         label: {
-                            Text("Navigate\(searchText)")
+
+                            HStack {
+                                VStack(alignment: .leading) {
+
+                                    Text(searchText.isEmpty ? "Ticker Symbol" : "\(searchText)")
+                                        .bold()
+
+
+                                    Text("Company name")
+                                        .font(.system(size: 18))
+                                            .frame(alignment: .leading)
+
+                                }
+                                Spacer()
+                                Text("$40.4")
+                                    .font(.system(size: 23))
+                            }
+                            
                         }
-
+                        
                     )
-
-
+                        
                 }
-//                .navigationBarTitle(Text("Search"))
-                .navigationTitle("Stock")
+                .navigationTitle("WatchList")
             }
-            
+
             
         }
         .ignoresSafeArea()
@@ -64,6 +81,6 @@ extension View {
 
 struct StockSearchList_Previews: PreviewProvider {
     static var previews: some View {
-        StockSearchList()
+        WatchListView()
     }
 }

@@ -21,7 +21,7 @@ struct ContentView: View {
                     Text("Watchlist")
                 }.tag(1)
             
-            StockSearchList()
+            WatchListView()
                 .tabItem {
                     Image(systemName: "doc.text.magnifyingglass")
                     Text("Stock Search")

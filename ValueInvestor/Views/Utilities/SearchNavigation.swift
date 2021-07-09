@@ -42,6 +42,8 @@ struct SearchNavigation<Content: View>: UIViewControllerRepresentable {
             rootViewController = UIHostingController(rootView: content)
             searchController.searchBar.autocapitalizationType = .none
             searchController.obscuresBackgroundDuringPresentation = false
+            searchController.searchBar.placeholder = "Stock Symbol"
+            searchController.searchBar.autocapitalizationType = .allCharacters
             rootViewController.navigationItem.searchController = searchController
             
             _text = searchText
