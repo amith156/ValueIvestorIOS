@@ -9,7 +9,12 @@
 /* Begin PBXBuildFile section */
 		581C4BC5268A3CD6004AE62D /* WatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581C4BC4268A3CD6004AE62D /* WatchListView.swift */; };
 		583A2680268F9E4400E60D4D /* WatchList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583A267F268F9E4400E60D4D /* WatchList.swift */; };
+		584CC759269DF2D400B2D795 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584CC758269DF2D400B2D795 /* Result.swift */; };
+		584CC75B269DF45500B2D795 /* GetQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584CC75A269DF45500B2D795 /* GetQuotes.swift */; };
+		58814992269E9AA000EAA8A2 /* ItemQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58814991269E9AA000EAA8A2 /* ItemQuotes.swift */; };
 		58A03FB8268BA80F005E1E67 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A03FB7268BA80F005E1E67 /* SearchBar.swift */; };
+		58CBF3E92698F612004B2B9F /* QuoteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CBF3E82698F612004B2B9F /* QuoteResponse.swift */; };
+		58CBF3EC2698F898004B2B9F /* WatchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CBF3EB2698F898004B2B9F /* WatchListViewModel.swift */; };
 		58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64A126826E9100994D66 /* ValueInvestorApp.swift */; };
 		58CC64A426826E9100994D66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64A326826E9100994D66 /* ContentView.swift */; };
 		58CC64A626826E9200994D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58CC64A526826E9200994D66 /* Assets.xcassets */; };
@@ -39,7 +44,12 @@
 /* Begin PBXFileReference section */
 		581C4BC4268A3CD6004AE62D /* WatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListView.swift; sourceTree = "<group>"; };
 		583A267F268F9E4400E60D4D /* WatchList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchList.swift; sourceTree = "<group>"; };
+		584CC758269DF2D400B2D795 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		584CC75A269DF45500B2D795 /* GetQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuotes.swift; sourceTree = "<group>"; };
+		58814991269E9AA000EAA8A2 /* ItemQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemQuotes.swift; sourceTree = "<group>"; };
 		58A03FB7268BA80F005E1E67 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		58CBF3E82698F612004B2B9F /* QuoteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteResponse.swift; sourceTree = "<group>"; };
+		58CBF3EB2698F898004B2B9F /* WatchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewModel.swift; sourceTree = "<group>"; };
 		58CC649E26826E9100994D66 /* ValueInvestor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ValueInvestor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CC64A126826E9100994D66 /* ValueInvestorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueInvestorApp.swift; sourceTree = "<group>"; };
 		58CC64A326826E9100994D66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -100,6 +110,25 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		58CBF3E72698EDF2004B2B9F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				584CC75A269DF45500B2D795 /* GetQuotes.swift */,
+				58CBF3E82698F612004B2B9F /* QuoteResponse.swift */,
+				584CC758269DF2D400B2D795 /* Result.swift */,
+				58814991269E9AA000EAA8A2 /* ItemQuotes.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		58CBF3EA2698F6E2004B2B9F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				58CBF3EB2698F898004B2B9F /* WatchListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		58CC649526826E9100994D66 = {
 			isa = PBXGroup;
 			children = (
@@ -124,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				58CC64A126826E9100994D66 /* ValueInvestorApp.swift */,
+				58CBF3E72698EDF2004B2B9F /* Models */,
+				58CBF3EA2698F6E2004B2B9F /* ViewModel */,
 				583A267E268F9E0B00E60D4D /* Views */,
 				58CC64A526826E9200994D66 /* Assets.xcassets */,
 				58CC64AA26826E9200994D66 /* Info.plist */,
@@ -287,12 +318,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				584CC759269DF2D400B2D795 /* Result.swift in Sources */,
+				584CC75B269DF45500B2D795 /* GetQuotes.swift in Sources */,
 				581C4BC5268A3CD6004AE62D /* WatchListView.swift in Sources */,
 				58A03FB8268BA80F005E1E67 /* SearchBar.swift in Sources */,
+				58CBF3EC2698F898004B2B9F /* WatchListViewModel.swift in Sources */,
 				58EC29E3268EC645006FAFAE /* SearchNavigation.swift in Sources */,
 				58CC64A426826E9100994D66 /* ContentView.swift in Sources */,
 				58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */,
+				58814992269E9AA000EAA8A2 /* ItemQuotes.swift in Sources */,
 				583A2680268F9E4400E60D4D /* WatchList.swift in Sources */,
+				58CBF3E92698F612004B2B9F /* QuoteResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

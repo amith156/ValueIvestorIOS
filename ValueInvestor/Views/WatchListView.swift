@@ -1,5 +1,5 @@
 //
-//  StockSearchList.swift
+//  WatchListView.swift
 //  ValueInvestor
 //
 //  Created by Amith Narayan on 28/06/2021.
@@ -11,6 +11,8 @@ struct WatchListView: View {
     
     @State private var searchText : String = ""
     @State private var searchTextFocuse : Bool = true
+    @StateObject var watchListViewModel = WatchListViewModel()
+    var resultArray : [Int] = [1,2,3,4,5]
     
     
     
@@ -23,6 +25,7 @@ struct WatchListView: View {
         descriptor = descriptor.addingAttributes([UIFontDescriptor.AttributeName.traits : [UIFontDescriptor.TraitKey.weight : UIFont.Weight.bold]])
         let font = UIFont.init(descriptor: descriptor, size: 40)
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : font]
+//        resultArray = watchListViewModel.resultObj
     }
     
     var body: some View {
@@ -31,8 +34,9 @@ struct WatchListView: View {
             
             SearchNavigation(text: $searchText, search: {}, cancel: {}) {
                 
-                List(0 ..< 30) { item in
-                        
+                
+                List(watchListViewModel.resultObj) { item in
+
                     NavigationLink(
 
                         destination: Text("Destination"),
@@ -41,9 +45,11 @@ struct WatchListView: View {
                             HStack {
                                 VStack(alignment: .leading) {
 
-                                    Text(searchText.isEmpty ? "Ticker Symbol" : "\(searchText)")
-                                        .bold()
+//                                    Text(searchText.isEmpty ? "Ticker Symbol" : "\(searchText)")
+//                                        .bold()
 
+                                    Text(item.symbol)
+                                        .bold()
 
                                     Text("Company name")
                                         .font(.system(size: 18))
@@ -54,11 +60,11 @@ struct WatchListView: View {
                                 Text("$40.4")
                                     .font(.system(size: 23))
                             }
-                            
+
                         }
-                        
+
                     )
-                        
+
                 }
                 .navigationTitle("WatchList")
             }
