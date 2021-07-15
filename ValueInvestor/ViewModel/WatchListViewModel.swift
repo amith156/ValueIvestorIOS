@@ -10,7 +10,7 @@ import Combine
 
 class WatchListViewModel : ObservableObject {
     
-    @Published var resultObj: GetQuotes = GetQuotes()
+    @Published var resultObj = [Result]()
     var cancellables = Set<AnyCancellable>()
     
     
@@ -21,13 +21,10 @@ class WatchListViewModel : ObservableObject {
     
     func getResultObjects() {
         
-//        guard let url = URL(string: "") else {
-//            return
-//        }
         
         let headers = [
             "x-rapidapi-key" : "c9ebe735b0msh5f2608e4e3af023p1a8335jsn8a907a5b3270",
-            "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
+//            "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
         ]
         
         
@@ -53,10 +50,6 @@ class WatchListViewModel : ObservableObject {
         requestURL.httpMethod = "GET"
         requestURL.allHTTPHeaderFields = headers
         
-//        URLSession.shared.dataTaskPublisher(for: <#T##URLRequest#>)
-        
-        
-        
         
         URLSession.shared.dataTaskPublisher(for: requestURL as URLRequest)
             .subscribe(on: DispatchQueue.global(qos: .background))
@@ -80,7 +73,13 @@ class WatchListViewModel : ObservableObject {
 //                resultArrayObj.quoteResponse.result.forEach { item in
 //                    self?.resultObj.append(item.itemQuotes)
 //                }
-                self?.resultObj = resultArrayObj
+//                self?.resultObj = resultArrayObj
+                
+                resultArrayObj.quoteResponse?.result.forEach({ obj in
+                    self?.resultObj.append(obj)
+                })
+                
+                
                 print("#####> \(resultArrayObj)")
             })
             .store(in: &cancellables)

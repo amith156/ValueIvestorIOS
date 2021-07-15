@@ -12,5 +12,6 @@ struct Result : Codable {
 //    var id = UUID()
     let symbol: String
     let bid, ask: Double
+    let shortName : String
     
 }
