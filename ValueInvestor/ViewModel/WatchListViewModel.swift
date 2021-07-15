@@ -15,7 +15,14 @@ class WatchListViewModel : ObservableObject {
     
     
     init() {
-        getResultObjects()
+//        getResultObjects()
+        
+        resultObj.append(Result(symbol: "AAPL", bid: 140.5, ask: 180.5, shortName: "Apple Inc."))
+        resultObj.append(Result(symbol: "ZM", bid: 352.67, ask: 180.5, shortName: "Zoom Inc."))
+        resultObj.append(Result(symbol: "IBM", bid: 56.54, ask: 180.5, shortName: "International Business Machines"))
+        resultObj.append(Result(symbol: "PSTH", bid: 20.84, ask: 180.5, shortName: "Pershing Square Capital"))
+        resultObj.append(Result(symbol: "TSLA", bid: 668.94, ask: 180.5, shortName: "Tesla Inc."))
+        resultObj.append(Result(symbol: "KL", bid: 42.8, ask: 180.5, shortName: "Kerkland Lake Gold Inc."))
     }
     
     
@@ -35,7 +42,7 @@ class WatchListViewModel : ObservableObject {
             components.path = "/market/v2/get-quotes"
             components.queryItems = [
                 URLQueryItem(name: "region", value: "US"),
-                URLQueryItem(name: "symbols", value: "AMD%2CIBM%2CAAPL")
+                URLQueryItem(name: "symbols", value: "AMD%2CIBM%2CAAPL%2CTSLA%2CZM")
             ]
             
             return components.url
@@ -69,11 +76,6 @@ class WatchListViewModel : ObservableObject {
 //                print("-----> COMPLETION: \(completion)")
                 print("=====> \($0)")
             }, receiveValue: { [weak self] resultArrayObj in
-                
-//                resultArrayObj.quoteResponse.result.forEach { item in
-//                    self?.resultObj.append(item.itemQuotes)
-//                }
-//                self?.resultObj = resultArrayObj
                 
                 resultArrayObj.quoteResponse?.result.forEach({ obj in
                     self?.resultObj.append(obj)
