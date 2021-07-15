@@ -26,16 +26,20 @@ struct WatchListView: View {
         let font = UIFont.init(descriptor: descriptor, size: 40)
         UINavigationBar.appearance().largeTitleTextAttributes = [.font : font]
 //        resultArray = watchListViewModel.resultObj
+        print("\(watchListViewModel.resultObj)")
     }
     
     var body: some View {
 
         VStack {
+//            guard let x = watchListViewModel.resultObj else {
+//                Text("****")
+//            }
             
             SearchNavigation(text: $searchText, search: {}, cancel: {}) {
-                
-                
-                List(watchListViewModel.resultObj) { item in
+
+
+                List(1 ..< 10) { item in
 
                     NavigationLink(
 
@@ -45,11 +49,11 @@ struct WatchListView: View {
                             HStack {
                                 VStack(alignment: .leading) {
 
-//                                    Text(searchText.isEmpty ? "Ticker Symbol" : "\(searchText)")
-//                                        .bold()
-
-                                    Text(item.symbol)
+                                    Text(searchText.isEmpty ? "Ticker Symbol" : "\(searchText)")
                                         .bold()
+
+//                                    Text(item.symbol)
+//                                        .bold()
 
                                     Text("Company name")
                                         .font(.system(size: 18))

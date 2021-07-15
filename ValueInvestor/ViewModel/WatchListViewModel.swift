@@ -10,7 +10,7 @@ import Combine
 
 class WatchListViewModel : ObservableObject {
     
-    @Published var resultObj: [ItemQuotes] = []
+    @Published var resultObj: GetQuotes = GetQuotes()
     var cancellables = Set<AnyCancellable>()
     
     
@@ -63,23 +63,25 @@ class WatchListViewModel : ObservableObject {
             .receive(on: DispatchQueue.main)
             .tryMap { (data, responce) -> Data in
 
-                guard let responce = responce as? HTTPURLResponse, responce.statusCode >= 200 && responce.statusCode < 300 else {
-                    throw URLError(.badServerResponse)
+                guard let responce = responce as? HTTPURLResponse, responce.statusCode == 200 else {
+                    throw URLError(.badURL)
                 }
 
-                print("-----> (\(data)")
+                print("-----> (\(data.count)")
                 return data
             }
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
-            .sink(receiveCompletion: { completion in
-                print("-----> COMPLETION: \(completion)")
+            .sink(receiveCompletion: {
+//                completion in
+//                print("-----> COMPLETION: \(completion)")
+                print("=====> \($0)")
             }, receiveValue: { [weak self] resultArrayObj in
                 
-                resultArrayObj.quoteResponse.result.forEach { item in
-                    self?.resultObj.append(item.itemQuotes)
-                }
-                
-//                print(resultArrayObj)
+//                resultArrayObj.quoteResponse.result.forEach { item in
+//                    self?.resultObj.append(item.itemQuotes)
+//                }
+                self?.resultObj = resultArrayObj
+                print("#####> \(resultArrayObj)")
             })
             .store(in: &cancellables)
         

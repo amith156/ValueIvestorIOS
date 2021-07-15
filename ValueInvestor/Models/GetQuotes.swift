@@ -10,6 +10,6 @@ import Foundation
 struct GetQuotes : Codable {
     
     
-    let quoteResponse : QuoteResponse
+    var quoteResponse : QuoteResponse?
     
 }

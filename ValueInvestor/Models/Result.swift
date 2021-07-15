@@ -9,8 +9,8 @@ import Foundation
 
 struct Result : Codable {
     
-    
-    let itemQuotes : ItemQuotes
-
+//    var id = UUID()
+    let symbol: String
+    let bid, ask: Double
     
 }
