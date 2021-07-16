@@ -13,5 +13,6 @@ struct Result : Codable {
     let symbol: String
     let bid, ask: Double
     let shortName : String
+    let regularMarketChangePercent : Double
     
 }

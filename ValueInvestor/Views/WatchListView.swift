@@ -46,13 +46,8 @@ struct WatchListView: View {
                     NavigationLink(
 
                         destination:
-                            WatchListItemDetail(resultObj: item)
-                            
-                            
-//                            Text("Destination")
+                            WatchListItemDetail(resultObj: item),
                         
-                        
-                        ,
                         label: {
 
                             HStack {

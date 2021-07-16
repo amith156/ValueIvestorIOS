@@ -17,12 +17,12 @@ class WatchListViewModel : ObservableObject {
     init() {
 //        getResultObjects()
         
-        resultObj.append(Result(symbol: "AAPL", bid: 140.5, ask: 180.5, shortName: "Apple Inc."))
-        resultObj.append(Result(symbol: "ZM", bid: 352.67, ask: 180.5, shortName: "Zoom Inc."))
-        resultObj.append(Result(symbol: "IBM", bid: 56.54, ask: 180.5, shortName: "International Business Machines"))
-        resultObj.append(Result(symbol: "PSTH", bid: 20.84, ask: 180.5, shortName: "Pershing Square Capital"))
-        resultObj.append(Result(symbol: "TSLA", bid: 668.94, ask: 180.5, shortName: "Tesla Inc."))
-        resultObj.append(Result(symbol: "KL", bid: 42.8, ask: 180.5, shortName: "Kerkland Lake Gold Inc."))
+        resultObj.append(Result(symbol: "AAPL", bid: 140.5, ask: 180.5, shortName: "Apple Inc.", regularMarketChangePercent: -2.45))
+        resultObj.append(Result(symbol: "ZM", bid: 352.67, ask: 180.5, shortName: "Zoom Inc.", regularMarketChangePercent: 1.24))
+        resultObj.append(Result(symbol: "IBM", bid: 56.54, ask: 180.5, shortName: "International Business Machines", regularMarketChangePercent: -3.44))
+        resultObj.append(Result(symbol: "PSTH", bid: 20.84, ask: 180.5, shortName: "Pershing Square Capital", regularMarketChangePercent: 5.12))
+        resultObj.append(Result(symbol: "TSLA", bid: 668.94, ask: 180.5, shortName: "Tesla Inc.", regularMarketChangePercent: -6.17))
+        resultObj.append(Result(symbol: "KL", bid: 42.8, ask: 180.5, shortName: "Kerkland Lake Gold Inc.", regularMarketChangePercent: -0.38))
     }
     
     
