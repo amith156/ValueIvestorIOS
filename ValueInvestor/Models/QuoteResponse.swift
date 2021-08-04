@@ -10,7 +10,7 @@ import Foundation
 
 struct QuoteResponse : Codable {
     
-    let result : [Result]
+    let result : [Result]?
     
     
 }
