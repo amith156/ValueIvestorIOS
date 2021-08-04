@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUICharts
 
 struct WatchListItemDetail: View {
     
@@ -58,7 +59,56 @@ struct WatchListItemDetail: View {
                 .padding(.leading)
                 .padding(.trailing)
             
+            PriceGraph()
+                .padding(.leading)
+                .padding(.trailing)
+            
+            
+            
+            Divider()
+                .padding(.leading)
+                .padding(.trailing)
+
+            
+            HStack(spacing: 21){
+                
+                
+                VStack(spacing: 6) {
+                    FundamentalRatios(FundamentalName: "P/E Ratio", FundamentalValue: "7.4")
+                    FundamentalRatios(FundamentalName: "P/S Ratio", FundamentalValue: "7.4")
+                    FundamentalRatios(FundamentalName: "P/B Ratio", FundamentalValue: "7.4")
+
+                }
+                
+                Divider()
+                    .frame(height: 75)
+                
+                VStack(spacing: 6) {
+                    FundamentalRatios(FundamentalName: "Debt-Equity", FundamentalValue: "7.4")
+                    FundamentalRatios(FundamentalName: "P/E Ratio", FundamentalValue: "7.4")
+                    FundamentalRatios(FundamentalName: "P/E Ratio", FundamentalValue: "7.4")
+
+                }
+                
+//                Divider()
+//                    .frame(height: 60)
+//
+//                VStack {
+//                    FundamentalRatios(FundamentalName: "P/E Ratio", FundamentalValue: "7.4")
+//                    FundamentalRatios(FundamentalName: "P/E Ratio", FundamentalValue: "7.4")
+//                    FundamentalRatios(FundamentalName: "P/E Ratio", FundamentalValue: "7.4")
+//
+//                }
+            }
+            .padding()
+            
+            
+            
+            
             Spacer()
+            
+
+            
         }
         .navigationTitle("\(resultObj.shortName)")
         .navigationBarTitleDisplayMode(.inline)
@@ -80,5 +130,39 @@ struct WatchListItemDetail: View {
 struct WatchListItemDetail_Previews: PreviewProvider {
     static var previews: some View {
         WatchListItemDetail(resultObj: Result(symbol: "AAPL", bid: 140.5, ask: 180.5, shortName: "Apple Inc.", regularMarketChangePercent: -28.34))
+    }
+}
+
+struct FundamentalRatios: View {
+    
+    var FundamentalName : String
+    var FundamentalValue : String
+    
+    var body: some View {
+        
+        HStack(spacing: 8) {
+            Text(FundamentalName)
+                .font(.system(size: 17))
+            
+            
+            Button(action: {
+                
+//                Rectangle()
+//                    .frame(width: 40, height: 6, alignment: .center)
+                
+            }, label: {
+                Image(systemName: "info.circle")
+                    .foregroundColor(.gray)
+            })
+            
+            
+                
+            
+            Spacer()
+            
+            Text(FundamentalValue)
+                .font(.system(size: 17))
+        }
+        
     }
 }

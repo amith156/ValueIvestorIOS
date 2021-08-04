@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,7 @@
 		5855247E269FDB6200E118B2 /* WatchListItemDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5855247D269FDB6200E118B2 /* WatchListItemDetail.swift */; };
 		5855248026A083AB00E118B2 /* WatchListItemDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5855247F26A083AB00E118B2 /* WatchListItemDetailViewModel.swift */; };
 		58814992269E9AA000EAA8A2 /* ItemQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58814991269E9AA000EAA8A2 /* ItemQuotes.swift */; };
+		588A39CA26A1E59700AF617C /* PriceGraph.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588A39C926A1E59700AF617C /* PriceGraph.swift */; };
 		58A03FB8268BA80F005E1E67 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A03FB7268BA80F005E1E67 /* SearchBar.swift */; };
 		58CBF3E92698F612004B2B9F /* QuoteResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CBF3E82698F612004B2B9F /* QuoteResponse.swift */; };
 		58CBF3EC2698F898004B2B9F /* WatchListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CBF3EB2698F898004B2B9F /* WatchListViewModel.swift */; };
@@ -23,6 +24,7 @@
 		58CC64A926826E9200994D66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58CC64A826826E9200994D66 /* Preview Assets.xcassets */; };
 		58CC64B426826E9200994D66 /* ValueInvestorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64B326826E9200994D66 /* ValueInvestorTests.swift */; };
 		58CC64BF26826E9200994D66 /* ValueInvestorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */; };
+		58D1E4C226A1D054009DD233 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 58D1E4C126A1D054009DD233 /* SwiftUICharts */; };
 		58EC29E3268EC645006FAFAE /* SearchNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EC29E2268EC645006FAFAE /* SearchNavigation.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +53,7 @@
 		5855247D269FDB6200E118B2 /* WatchListItemDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListItemDetail.swift; sourceTree = "<group>"; };
 		5855247F26A083AB00E118B2 /* WatchListItemDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListItemDetailViewModel.swift; sourceTree = "<group>"; };
 		58814991269E9AA000EAA8A2 /* ItemQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemQuotes.swift; sourceTree = "<group>"; };
+		588A39C926A1E59700AF617C /* PriceGraph.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceGraph.swift; sourceTree = "<group>"; };
 		58A03FB7268BA80F005E1E67 /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		58CBF3E82698F612004B2B9F /* QuoteResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteResponse.swift; sourceTree = "<group>"; };
 		58CBF3EB2698F898004B2B9F /* WatchListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchListViewModel.swift; sourceTree = "<group>"; };
@@ -74,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58D1E4C226A1D054009DD233 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -110,6 +114,7 @@
 				583A267F268F9E4400E60D4D /* WatchList.swift */,
 				581C4BC4268A3CD6004AE62D /* WatchListView.swift */,
 				5855247D269FDB6200E118B2 /* WatchListItemDetail.swift */,
+				588A39C926A1E59700AF617C /* PriceGraph.swift */,
 				580D180F2690A40D0056B528 /* Utilities */,
 			);
 			path = Views;
@@ -211,6 +216,9 @@
 			dependencies = (
 			);
 			name = ValueInvestor;
+			packageProductDependencies = (
+				58D1E4C126A1D054009DD233 /* SwiftUICharts */,
+			);
 			productName = ValueInvestor;
 			productReference = 58CC649E26826E9100994D66 /* ValueInvestor.app */;
 			productType = "com.apple.product-type.application";
@@ -282,6 +290,9 @@
 				Base,
 			);
 			mainGroup = 58CC649526826E9100994D66;
+			packageReferences = (
+				58D1E4C026A1D054009DD233 /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = 58CC649F26826E9100994D66 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -336,6 +347,7 @@
 				58814992269E9AA000EAA8A2 /* ItemQuotes.swift in Sources */,
 				5855247E269FDB6200E118B2 /* WatchListItemDetail.swift in Sources */,
 				583A2680268F9E4400E60D4D /* WatchList.swift in Sources */,
+				588A39CA26A1E59700AF617C /* PriceGraph.swift in Sources */,
 				58CBF3E92698F612004B2B9F /* QuoteResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -656,6 +668,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		58D1E4C026A1D054009DD233 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		58D1E4C126A1D054009DD233 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58D1E4C026A1D054009DD233 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 58CC649626826E9100994D66 /* Project object */;
 }
