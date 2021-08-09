@@ -11,7 +11,11 @@ import SwiftUI
 struct ValueInvestorApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                StockHomeView()
+            }
+            .navigationBarHidden(true)
+            
         }
     }
 }

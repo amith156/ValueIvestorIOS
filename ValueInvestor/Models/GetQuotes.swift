@@ -191,7 +191,7 @@ struct Result {
     let esgPopulated, tradeable: Bool?
     let epsTrailingTwelveMonths, epsForward, epsCurrentYear, epsNextQuarter: Double?
     let priceEpsCurrentYear, priceEpsNextQuarter: Double?
-    let symbol: String?
+    let symbol: String
     let currentStockHoldings: Double?
     
     
