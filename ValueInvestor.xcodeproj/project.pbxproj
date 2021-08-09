@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5836B87326C0CC8000530476 /* StockHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5836B87226C0CC8000530476 /* StockHomeViewModel.swift */; };
+		58399AE526BD8E7300EBEB2B /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58399AE426BD8E7300EBEB2B /* CircleButtonView.swift */; };
 		584CC75B269DF45500B2D795 /* GetQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584CC75A269DF45500B2D795 /* GetQuotes.swift */; };
+		5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */; };
+		5875007326BDA5F100870535 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007226BDA5F100870535 /* Double.swift */; };
+		5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007426BDA93B00870535 /* PreviewProvider.swift */; };
 		58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64A126826E9100994D66 /* ValueInvestorApp.swift */; };
-		58CC64A426826E9100994D66 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64A326826E9100994D66 /* ContentView.swift */; };
+		58CC64A426826E9100994D66 /* StockHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64A326826E9100994D66 /* StockHomeView.swift */; };
 		58CC64A626826E9200994D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58CC64A526826E9200994D66 /* Assets.xcassets */; };
 		58CC64A926826E9200994D66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58CC64A826826E9200994D66 /* Preview Assets.xcassets */; };
 		58CC64B426826E9200994D66 /* ValueInvestorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64B326826E9200994D66 /* ValueInvestorTests.swift */; };
 		58CC64BF26826E9200994D66 /* ValueInvestorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */; };
 		58D1E4C226A1D054009DD233 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 58D1E4C126A1D054009DD233 /* SwiftUICharts */; };
+		58E162C126C016FE00D57F12 /* StockRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E162C026C016FE00D57F12 /* StockRowView.swift */; };
 		58FC45A826BB45DD00601614 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC45A726BB45DD00601614 /* Color.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,10 +42,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5836B87226C0CC8000530476 /* StockHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockHomeViewModel.swift; sourceTree = "<group>"; };
+		58399AE426BD8E7300EBEB2B /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		584CC75A269DF45500B2D795 /* GetQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuotes.swift; sourceTree = "<group>"; };
+		5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
+		5875007226BDA5F100870535 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
+		5875007426BDA93B00870535 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
 		58CC649E26826E9100994D66 /* ValueInvestor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ValueInvestor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CC64A126826E9100994D66 /* ValueInvestorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueInvestorApp.swift; sourceTree = "<group>"; };
-		58CC64A326826E9100994D66 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		58CC64A326826E9100994D66 /* StockHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockHomeView.swift; sourceTree = "<group>"; };
 		58CC64A526826E9200994D66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		58CC64A826826E9200994D66 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		58CC64AA26826E9200994D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +60,7 @@
 		58CC64BA26826E9200994D66 /* ValueInvestorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValueInvestorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueInvestorUITests.swift; sourceTree = "<group>"; };
 		58CC64C026826E9200994D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58E162C026C016FE00D57F12 /* StockRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRowView.swift; sourceTree = "<group>"; };
 		58FC45A726BB45DD00601614 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,7 +93,8 @@
 		583A267E268F9E0B00E60D4D /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				58CC64A326826E9100994D66 /* ContentView.swift */,
+				58CC64A326826E9100994D66 /* StockHomeView.swift */,
+				58E162C026C016FE00D57F12 /* StockRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -97,6 +110,7 @@
 		58CBF3EA2698F6E2004B2B9F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				5836B87226C0CC8000530476 /* StockHomeViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -173,6 +187,8 @@
 		58FC45A426BB3A5800601614 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				58399AE426BD8E7300EBEB2B /* CircleButtonView.swift */,
+				5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -190,6 +206,8 @@
 			isa = PBXGroup;
 			children = (
 				58FC45A726BB45DD00601614 /* Color.swift */,
+				5875007226BDA5F100870535 /* Double.swift */,
+				5875007426BDA93B00870535 /* PreviewProvider.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,8 +349,14 @@
 			files = (
 				584CC75B269DF45500B2D795 /* GetQuotes.swift in Sources */,
 				58FC45A826BB45DD00601614 /* Color.swift in Sources */,
-				58CC64A426826E9100994D66 /* ContentView.swift in Sources */,
+				58CC64A426826E9100994D66 /* StockHomeView.swift in Sources */,
+				58399AE526BD8E7300EBEB2B /* CircleButtonView.swift in Sources */,
 				58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */,
+				58E162C126C016FE00D57F12 /* StockRowView.swift in Sources */,
+				5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */,
+				5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */,
+				5836B87326C0CC8000530476 /* StockHomeViewModel.swift in Sources */,
+				5875007326BDA5F100870535 /* Double.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
