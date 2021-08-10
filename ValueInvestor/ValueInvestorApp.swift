@@ -9,12 +9,16 @@ import SwiftUI
 
 @main
 struct ValueInvestorApp: App {
+    
+    @StateObject private var stockHomeViewModel = StockHomeViewModel()
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                StockHomeView()
+                StockHomeView().navigationBarHidden(true)
             }
-            .navigationBarHidden(true)
+            .environmentObject(stockHomeViewModel)
+            
             
         }
     }

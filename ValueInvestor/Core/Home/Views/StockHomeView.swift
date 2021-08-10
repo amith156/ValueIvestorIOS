@@ -10,18 +10,32 @@ import SwiftUI
 struct StockHomeView: View {
     
     @State private var showPortfolio : Bool = false
+    @EnvironmentObject private var stockHomeViewModel : StockHomeViewModel
     
     var body: some View {
         
         ZStack {
             Color.theme.background.ignoresSafeArea()
             
-        
+            
             VStack {
                 homeHeader
-                List {
-                    StockRowView(getResult: DeveloperPreview.instance.result, showHoldingsColumn: false)
+                
+                columnHeadings
+
+                
+                
+                
+                if(showPortfolio == false) {
+                    allStockList
+                        .transition(.move(edge: .leading))
                 }
+                if(showPortfolio == true) {
+                    portfolioStockList
+                        .transition(.move(edge: .trailing))
+                }
+                
+                
                 Spacer(minLength: 0)
             }
             
@@ -35,6 +49,7 @@ struct StockHomeView_Previews: PreviewProvider {
     static var previews: some View {
         StockHomeView()
             .navigationBarHidden(true)
+            .environmentObject(dev.stockHomeViewModel)
     }
 }
 
@@ -68,6 +83,46 @@ extension StockHomeView {
                 }
             
         }.padding(.horizontal)
+    }
+    
+    
+    private var allStockList : some View {
+        List {
+            
+            ForEach(stockHomeViewModel.arrayStocks, id: \.symbol) { stock in
+                StockRowView(getResult: stock, showHoldingsColumn: false)
+                    .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+            }
+            
+        }
+        .listStyle(PlainListStyle())
+    }
+    
+    private var portfolioStockList : some View {
+        List {
+            
+            ForEach(stockHomeViewModel.arrayStocks, id: \.symbol) { stock in
+                StockRowView(getResult: stock, showHoldingsColumn: true)
+                    .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+            }
+            
+        }
+        .listStyle(PlainListStyle())
+    }
+    
+    
+    private var columnHeadings : some View {
+        HStack {
+            Text("Ticker Symbol")
+            Spacer()
+            if(showPortfolio) {
+                Text("Holdings")
+            }
+            Text("Price").frame(width: UIScreen.main.bounds.width/3, alignment: .trailing)
+        }
+        .padding(.horizontal)
+        .font(.caption)
+        .foregroundColor(Color.theme.secondaryText)
     }
     
 }
