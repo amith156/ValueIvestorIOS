@@ -134,17 +134,17 @@
 import Foundation
 
 // MARK: - GetQuotes
-struct GetQuotes {
+struct GetQuotes : Codable {
     let quoteResponse: QuoteResponse?
 }
 
 // MARK: - QuoteResponse
-struct QuoteResponse {
+struct QuoteResponse : Codable {
     let result: [Result]?
 }
 
 // MARK: - Result
-struct Result {
+struct Result : Codable {
     let language, region, quoteType, quoteSourceName: String?
     let triggerable: Bool?
     let currency: String?
@@ -208,7 +208,7 @@ func updateHoldings(amount : Double) -> Result {
 }
 
 // MARK: - PageViews
-struct PageViews {
+struct PageViews : Codable {
     let midTermTrend, longTermTrend, shortTermTrend: String?
 }
 

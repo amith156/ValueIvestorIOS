@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5823163726C2424B006A2075 /* GetQuotesService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5823163626C2424B006A2075 /* GetQuotesService.swift */; };
+		5823163926C248BE006A2075 /* URLComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5823163826C248BE006A2075 /* URLComponents.swift */; };
+		5823163B26C2504E006A2075 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5823163A26C2504E006A2075 /* URL.swift */; };
 		5836B87326C0CC8000530476 /* StockHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5836B87226C0CC8000530476 /* StockHomeViewModel.swift */; };
 		58399AE526BD8E7300EBEB2B /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58399AE426BD8E7300EBEB2B /* CircleButtonView.swift */; };
 		584CC75B269DF45500B2D795 /* GetQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584CC75A269DF45500B2D795 /* GetQuotes.swift */; };
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5823163626C2424B006A2075 /* GetQuotesService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuotesService.swift; sourceTree = "<group>"; };
+		5823163826C248BE006A2075 /* URLComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLComponents.swift; sourceTree = "<group>"; };
+		5823163A26C2504E006A2075 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		5836B87226C0CC8000530476 /* StockHomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockHomeViewModel.swift; sourceTree = "<group>"; };
 		58399AE426BD8E7300EBEB2B /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		584CC75A269DF45500B2D795 /* GetQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuotes.swift; sourceTree = "<group>"; };
@@ -90,6 +96,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5823163526C241E1006A2075 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5823163626C2424B006A2075 /* GetQuotesService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		583A267E268F9E0B00E60D4D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,9 +153,10 @@
 			isa = PBXGroup;
 			children = (
 				58CC64A126826E9100994D66 /* ValueInvestorApp.swift */,
-				58FC45A626BB3AC000601614 /* Extensions */,
-				58FC45A326BB3A3C00601614 /* Core */,
 				58CBF3E72698EDF2004B2B9F /* Models */,
+				5823163526C241E1006A2075 /* Services */,
+				58FC45A326BB3A3C00601614 /* Core */,
+				58FC45A626BB3AC000601614 /* Extensions */,
 				58CC64A526826E9200994D66 /* Assets.xcassets */,
 				58CC64AA26826E9200994D66 /* Info.plist */,
 				58CC64A726826E9200994D66 /* Preview Content */,
@@ -208,6 +223,8 @@
 				58FC45A726BB45DD00601614 /* Color.swift */,
 				5875007226BDA5F100870535 /* Double.swift */,
 				5875007426BDA93B00870535 /* PreviewProvider.swift */,
+				5823163826C248BE006A2075 /* URLComponents.swift */,
+				5823163A26C2504E006A2075 /* URL.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -352,11 +369,14 @@
 				58CC64A426826E9100994D66 /* StockHomeView.swift in Sources */,
 				58399AE526BD8E7300EBEB2B /* CircleButtonView.swift in Sources */,
 				58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */,
+				5823163B26C2504E006A2075 /* URL.swift in Sources */,
+				5823163726C2424B006A2075 /* GetQuotesService.swift in Sources */,
 				58E162C126C016FE00D57F12 /* StockRowView.swift in Sources */,
 				5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */,
 				5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */,
 				5836B87326C0CC8000530476 /* StockHomeViewModel.swift in Sources */,
 				5875007326BDA5F100870535 /* Double.swift in Sources */,
+				5823163926C248BE006A2075 /* URLComponents.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
