@@ -158,12 +158,13 @@ struct Result : Codable {
     let postMarketTime: Double?
     let postMarketPrice, postMarketChange, regularMarketChange, regularMarketChangePercent: Double?
     let regularMarketTime: Double?
-    let regularMarketPrice, regularMarketDayHigh: Double?
+    let regularMarketPrice: Double
+    let regularMarketDayHigh: Double?
     let regularMarketDayRange: String?
     let regularMarketDayLow: Double?
     let regularMarketVolume, sharesShort, sharesShortPrevMonth: Double?
     let shortPercentFloat, regularMarketPreviousClose : Double?
-    let bid, ask: Double
+    let bid, ask: Double?
     let bidSize, askSize: Double?
     let exchange, market, messageBoardID, fullExchangeName: String?
     let shortName, longName: String?
@@ -201,7 +202,7 @@ func updateHoldings(amount : Double) -> Result {
     
     
     var currentStockHoldingsValue: Double {
-        return (currentStockHoldings ?? 0) * bid
+        return (currentStockHoldings ?? 0) * regularMarketPrice
     }
     
     

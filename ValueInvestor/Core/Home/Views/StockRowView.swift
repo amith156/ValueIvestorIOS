@@ -70,7 +70,7 @@ extension StockRowView {
     private var columnRight : some View {
         VStack(alignment: .trailing) {
             
-            Text(getResult.ask.asCurrencyWith6Decimals())
+            Text(getResult.regularMarketPrice.asCurrencyWith6Decimals())
                 .bold()
                 .foregroundColor(Color.theme.accent)
             

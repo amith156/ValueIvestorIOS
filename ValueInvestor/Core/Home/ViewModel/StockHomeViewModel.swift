@@ -6,16 +6,27 @@
 //
 
 import Foundation
-
+import Combine
 class StockHomeViewModel : ObservableObject {
     
     @Published var arrayStocks : [Result] = []
     @Published var portfolioStocks : [Result] = []
     
+    private let getQuotesService = GetQuotesService()
+    private var cancellable = Set<AnyCancellable>()
+    
     init() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.arrayStocks.append(DeveloperPreview.instance.result)
-            self.portfolioStocks.append(DeveloperPreview.instance.result)
-        }
+        addSubscribers()
     }
+    
+    
+    func addSubscribers() {
+        getQuotesService.$result.sink { [weak self] resultArray in
+            self?.arrayStocks = resultArray
+            
+        }
+        .store(in: &cancellable)
+    }
+    
+    
 }
