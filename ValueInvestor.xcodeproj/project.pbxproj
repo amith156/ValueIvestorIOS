@@ -14,6 +14,7 @@
 		58399AE526BD8E7300EBEB2B /* CircleButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58399AE426BD8E7300EBEB2B /* CircleButtonView.swift */; };
 		584CC75B269DF45500B2D795 /* GetQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584CC75A269DF45500B2D795 /* GetQuotes.swift */; };
 		586830DA26C7874E002538D9 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586830D926C7874E002538D9 /* UIApplication.swift */; };
+		586830DE26C78F65002538D9 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586830DD26C78F65002538D9 /* SearchBarView.swift */; };
 		5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */; };
 		5875007326BDA5F100870535 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007226BDA5F100870535 /* Double.swift */; };
 		5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007426BDA93B00870535 /* PreviewProvider.swift */; };
@@ -54,6 +55,7 @@
 		58399AE426BD8E7300EBEB2B /* CircleButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonView.swift; sourceTree = "<group>"; };
 		584CC75A269DF45500B2D795 /* GetQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuotes.swift; sourceTree = "<group>"; };
 		586830D926C7874E002538D9 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		586830DD26C78F65002538D9 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
 		5875007226BDA5F100870535 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		5875007426BDA93B00870535 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 		58FC45A426BB3A5800601614 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				586830DD26C78F65002538D9 /* SearchBarView.swift */,
 				586830D626C777BB002538D9 /* CircleButton */,
 			);
 			path = Components;
@@ -398,6 +401,7 @@
 				584CC75B269DF45500B2D795 /* GetQuotes.swift in Sources */,
 				58FC45A826BB45DD00601614 /* Color.swift in Sources */,
 				58CC64A426826E9100994D66 /* StockHomeView.swift in Sources */,
+				586830DE26C78F65002538D9 /* SearchBarView.swift in Sources */,
 				58399AE526BD8E7300EBEB2B /* CircleButtonView.swift in Sources */,
 				58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */,
 				5823163B26C2504E006A2075 /* URL.swift in Sources */,
