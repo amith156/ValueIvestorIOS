@@ -11,6 +11,7 @@ class StockHomeViewModel : ObservableObject {
     
     @Published var arrayStocks : [Result] = []
     @Published var portfolioStocks : [Result] = []
+    @Published var searchText : String = ""
     
     private let getQuotesService = GetQuotesService()
     private var cancellable = Set<AnyCancellable>()

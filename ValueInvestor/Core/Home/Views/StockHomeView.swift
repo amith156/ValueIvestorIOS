@@ -21,6 +21,10 @@ struct StockHomeView: View {
             VStack {
                 homeHeader
                 
+//                SearchBarView(searchText: $stockHomeViewModel.searchText)
+//                    .autocapitalization(.allCharacters)
+//                    .disableAutocorrection(true)
+//
                 columnHeadings
 
                 
