@@ -23,7 +23,7 @@ class GetQuotesService {
 //        https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=AAPL
         
         let queryitems = [URLQueryItem(name: "region", value: "US"),
-                          URLQueryItem(name: "symbols", value: "AMD,IBM,AAPL")]
+                          URLQueryItem(name: "symbols", value: "AMD,IBM,AAPL,GOOGL,FB,SNAP,AMZN,TSLA,PLTR")]
         
         
         guard let url = URL(string: URLComponents().getQuotesURL!.absoluteString)?

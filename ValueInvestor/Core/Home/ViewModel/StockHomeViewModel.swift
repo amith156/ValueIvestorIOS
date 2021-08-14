@@ -22,11 +22,34 @@ class StockHomeViewModel : ObservableObject {
     
     
     func addSubscribers() {
-        getQuotesService.$result.sink { [weak self] resultArray in
-            self?.arrayStocks = resultArray
-            
-        }
-        .store(in: &cancellable)
+//        getQuotesService.$result.sink { [weak self] resultArray in
+//            self?.arrayStocks = resultArray
+//
+//        }
+//        .store(in: &cancellable)
+        
+        
+        $searchText
+            .combineLatest(getQuotesService.$result)
+            .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
+            .map({ (textSearch, stockArray) -> [Result] in
+                
+                guard !textSearch.isEmpty else {
+                    return stockArray
+                }
+                
+                return stockArray.filter { stockArr in
+                    return stockArr.symbol.contains(textSearch) ||
+                            stockArr.symbol.lowercased().contains(textSearch.lowercased())
+                }
+                
+                
+            })
+            .sink { [weak self] newStock in
+                self?.arrayStocks = newStock
+            }
+            .store(in: &cancellable)
+        
     }
     
     
