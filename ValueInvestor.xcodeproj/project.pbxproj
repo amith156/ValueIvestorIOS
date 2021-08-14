@@ -24,6 +24,7 @@
 		58CC64BF26826E9200994D66 /* ValueInvestorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */; };
 		58D1E4C226A1D054009DD233 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 58D1E4C126A1D054009DD233 /* SwiftUICharts */; };
 		58E162C126C016FE00D57F12 /* StockRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E162C026C016FE00D57F12 /* StockRowView.swift */; };
+		58F8A22A26C3F6BA00BA903B /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F8A22926C3F6BA00BA903B /* NetworkManager.swift */; };
 		58FC45A826BB45DD00601614 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FC45A726BB45DD00601614 /* Color.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueInvestorUITests.swift; sourceTree = "<group>"; };
 		58CC64C026826E9200994D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		58E162C026C016FE00D57F12 /* StockRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockRowView.swift; sourceTree = "<group>"; };
+		58F8A22926C3F6BA00BA903B /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		58FC45A726BB45DD00601614 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -153,8 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				58CC64A126826E9100994D66 /* ValueInvestorApp.swift */,
-				58CBF3E72698EDF2004B2B9F /* Models */,
-				5823163526C241E1006A2075 /* Services */,
+				58F8A22826C3F09600BA903B /* Networking */,
 				58FC45A326BB3A3C00601614 /* Core */,
 				58FC45A626BB3AC000601614 /* Extensions */,
 				58CC64A526826E9200994D66 /* Assets.xcassets */,
@@ -188,6 +189,24 @@
 				58CC64C026826E9200994D66 /* Info.plist */,
 			);
 			path = ValueInvestorUITests;
+			sourceTree = "<group>";
+		};
+		58F8A22726C3F08A00BA903B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				58F8A22926C3F6BA00BA903B /* NetworkManager.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		58F8A22826C3F09600BA903B /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				58CBF3E72698EDF2004B2B9F /* Models */,
+				58F8A22726C3F08A00BA903B /* Utilities */,
+				5823163526C241E1006A2075 /* Services */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		58FC45A326BB3A3C00601614 /* Core */ = {
@@ -374,6 +393,7 @@
 				58E162C126C016FE00D57F12 /* StockRowView.swift in Sources */,
 				5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */,
 				5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */,
+				58F8A22A26C3F6BA00BA903B /* NetworkManager.swift in Sources */,
 				5836B87326C0CC8000530476 /* StockHomeViewModel.swift in Sources */,
 				5875007326BDA5F100870535 /* Double.swift in Sources */,
 				5823163926C248BE006A2075 /* URLComponents.swift in Sources */,

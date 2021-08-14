@@ -35,25 +35,11 @@ class GetQuotesService {
         let requestURL = NSMutableURLRequest(url: url)
         requestURL.addValue("c9ebe735b0msh5f2608e4e3af023p1a8335jsn8a907a5b3270", forHTTPHeaderField: "x-rapidapi-key")
         
-        URLSession.shared.dataTaskPublisher(for: requestURL as URLRequest)
-            .subscribe(on: DispatchQueue.global(qos: .default))
-            .tryMap { output -> Data in
-                
-                guard let responce = output.response as? HTTPURLResponse, responce.statusCode >= 200 && responce.statusCode < 300 else {
-                    throw URLError(.badServerResponse)
-                }
-                return output.data
-            }
-            .receive(on: DispatchQueue.main)
+        NetworkManager.download(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
-            .sink { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print("===> \(error.localizedDescription)")
-                }
-            } receiveValue: { [weak self] receivedGetQuotes in
+            .sink(receiveCompletion: { completion in
+                NetworkManager.handleCompletion(completion: completion)
+            }, receiveValue: { [weak self] receivedGetQuotes in
                 self?.getQuotes = receivedGetQuotes
                 guard let resultArray = receivedGetQuotes.quoteResponse?.result else {
                     return
@@ -62,7 +48,8 @@ class GetQuotesService {
                 self?.result = resultArray
                 print(resultArray[0].ask)
                 self?.getQuoteCancellables?.cancel()
-            }
+            })
+            
             
             
         
