@@ -21,21 +21,27 @@ struct StockHomeView: View {
             VStack {
                 homeHeader
                 
+                ETFStatRow(showNextPageStat: $showPortfolio)
+                
                 SearchBarView(searchText: $stockHomeViewModel.searchText)
                     .autocapitalization(.allCharacters)
                     .disableAutocorrection(true)
+                    .padding(.horizontal)
 
                 columnHeadings
+                    .padding(.horizontal)
 
                 
                 
                 
-                if(showPortfolio == false) {
+                if(!showPortfolio) {
                     allStockList
+                        .padding(.horizontal)
                         .transition(.move(edge: .leading))
                 }
-                if(showPortfolio == true) {
+                if(showPortfolio) {
                     portfolioStockList
+                        .padding(.horizontal)
                         .transition(.move(edge: .trailing))
                 }
                 
@@ -83,6 +89,7 @@ extension StockHomeView {
                 .onTapGesture {
                     withAnimation(.spring()) {
                         showPortfolio.toggle()
+                        
                     }
                 }
             

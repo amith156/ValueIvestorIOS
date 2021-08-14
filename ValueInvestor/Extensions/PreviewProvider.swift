@@ -25,6 +25,10 @@ class DeveloperPreview {
         
     }
     
+    let etf1 = ETFModel(title: "SPY", value: "$700.4B", percentChange: 4.2)
+    let etf2 = ETFModel(title: "QQQ", value: "$342.7B", percentChange: -3.7)
+    let etf3 = ETFModel(title: "VIX", value: "$12.4B")
+    
     let stockHomeViewModel = StockHomeViewModel()
     
     

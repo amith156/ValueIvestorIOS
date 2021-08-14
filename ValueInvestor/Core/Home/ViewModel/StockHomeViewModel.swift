@@ -12,11 +12,19 @@ class StockHomeViewModel : ObservableObject {
     @Published var arrayStocks : [Result] = []
     @Published var portfolioStocks : [Result] = []
     @Published var searchText : String = ""
+    @Published var statModelArray : [ETFModel] = [
+        ETFModel(title: "SPY", value: "$700.4B", percentChange: 4.2),
+        ETFModel(title: "QQQ", value: "$342.7B", percentChange: -3.7),
+        ETFModel(title: "VIX", value: "$12.4B"),
+        ETFModel(title: "Portfolio", value: "1.5M", percentChange: +42.3),
+        ETFModel(title: "Portfolio", value: "1.5M", percentChange: +42.3),
+    ]
     
     private let getQuotesService = GetQuotesService()
     private var cancellable = Set<AnyCancellable>()
     
     init() {
+        
         addSubscribers()
     }
     
@@ -49,6 +57,24 @@ class StockHomeViewModel : ObservableObject {
                 self?.arrayStocks = newStock
             }
             .store(in: &cancellable)
+        
+        
+        getQuotesService.$etfResult
+            .map { resultArray -> [ETFModel] in
+                
+                var stats : [ETFModel] = []
+                
+                resultArray.forEach { result in
+                    stats.append(ETFModel(title: result.symbol, value: result.regularMarketPrice.asCurrencyWith2Decimals(), percentChange: result.regularMarketChangePercent))
+                }
+                
+                return stats
+            }
+            .sink { [weak self] etfModelArray in
+                self?.statModelArray = etfModelArray
+            }
+            .store(in: &cancellable)
+        
         
     }
     

@@ -15,6 +15,9 @@
 		584CC75B269DF45500B2D795 /* GetQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584CC75A269DF45500B2D795 /* GetQuotes.swift */; };
 		586830DA26C7874E002538D9 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586830D926C7874E002538D9 /* UIApplication.swift */; };
 		586830DE26C78F65002538D9 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586830DD26C78F65002538D9 /* SearchBarView.swift */; };
+		586830E026C7C2FB002538D9 /* ETFModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586830DF26C7C2FB002538D9 /* ETFModel.swift */; };
+		586830E226C7C424002538D9 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586830E126C7C424002538D9 /* StatsView.swift */; };
+		586830E426C7C994002538D9 /* ETFStatRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586830E326C7C994002538D9 /* ETFStatRow.swift */; };
 		5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */; };
 		5875007326BDA5F100870535 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007226BDA5F100870535 /* Double.swift */; };
 		5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007426BDA93B00870535 /* PreviewProvider.swift */; };
@@ -56,6 +59,9 @@
 		584CC75A269DF45500B2D795 /* GetQuotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetQuotes.swift; sourceTree = "<group>"; };
 		586830D926C7874E002538D9 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		586830DD26C78F65002538D9 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		586830DF26C7C2FB002538D9 /* ETFModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFModel.swift; sourceTree = "<group>"; };
+		586830E126C7C424002538D9 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
+		586830E326C7C994002538D9 /* ETFStatRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ETFStatRow.swift; sourceTree = "<group>"; };
 		5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
 		5875007226BDA5F100870535 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		5875007426BDA93B00870535 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 			children = (
 				58CC64A326826E9100994D66 /* StockHomeView.swift */,
 				58E162C026C016FE00D57F12 /* StockRowView.swift */,
+				586830E326C7C994002538D9 /* ETFStatRow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -132,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				584CC75A269DF45500B2D795 /* GetQuotes.swift */,
+				586830DF26C7C2FB002538D9 /* ETFModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -234,6 +242,7 @@
 		58FC45A426BB3A5800601614 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				586830E126C7C424002538D9 /* StatsView.swift */,
 				586830DD26C78F65002538D9 /* SearchBarView.swift */,
 				586830D626C777BB002538D9 /* CircleButton */,
 			);
@@ -405,6 +414,9 @@
 				58399AE526BD8E7300EBEB2B /* CircleButtonView.swift in Sources */,
 				58CC64A226826E9100994D66 /* ValueInvestorApp.swift in Sources */,
 				5823163B26C2504E006A2075 /* URL.swift in Sources */,
+				586830E426C7C994002538D9 /* ETFStatRow.swift in Sources */,
+				586830E226C7C424002538D9 /* StatsView.swift in Sources */,
+				586830E026C7C2FB002538D9 /* ETFModel.swift in Sources */,
 				5823163726C2424B006A2075 /* GetQuotesService.swift in Sources */,
 				58E162C126C016FE00D57F12 /* StockRowView.swift in Sources */,
 				5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */,

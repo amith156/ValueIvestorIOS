@@ -11,19 +11,24 @@ import Combine
 class GetQuotesService {
     
     @Published var result : [Result] = []
+    @Published var etfResult : [Result] = []
     @Published var getQuotes : GetQuotes = GetQuotes(quoteResponse: nil)
     var getQuoteCancellables : AnyCancellable?
     
     init() {
-        downloadGetQuotes()
+        downloadGetQuotes(tickerSymbols : "AMD,IBM,AAPL,GOOGL,FB,SNAP,AMZN,TSLA,PLTR,")
     }
     
-    private func downloadGetQuotes() {
+    func getStockQuotes(tickerSymbols: String) {
+        downloadGetQuotes(tickerSymbols: tickerSymbols)
+    }
+    
+    private func downloadGetQuotes(tickerSymbols: String = "SPY,QQQ,GLD") {
         
 //        https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes?region=US&symbols=AAPL
         
         let queryitems = [URLQueryItem(name: "region", value: "US"),
-                          URLQueryItem(name: "symbols", value: "AMD,IBM,AAPL,GOOGL,FB,SNAP,AMZN,TSLA,PLTR")]
+                          URLQueryItem(name: "symbols", value: tickerSymbols+"SPY,QQQ,GLD,ILTB,VEU")]
         
         
         guard let url = URL(string: URLComponents().getQuotesURL!.absoluteString)?
@@ -45,16 +50,15 @@ class GetQuotesService {
                     return
                 }
                 
+                let arr = receivedGetQuotes.quoteResponse!.result!.suffix(5)
+                
+                self?.etfResult = Array(arr)
+                
+                
                 self?.result = resultArray
                 print(resultArray[0].ask)
                 self?.getQuoteCancellables?.cancel()
             })
-            
-            
-            
-        
-        
-        
     }
     
 }
