@@ -38,9 +38,9 @@ class StockHomeViewModel : ObservableObject {
         
         
         $searchText
-            .combineLatest(getQuotesService.$result)
+            .combineLatest(getQuotesService.$result, getQuotesService.$searchResultArray)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-            .map({ (textSearch, stockArray) -> [Result] in
+            .map({ (textSearch, stockArray, searchResultArray) -> [Result] in
                 
                 guard !textSearch.isEmpty else {
                     return stockArray
@@ -50,7 +50,36 @@ class StockHomeViewModel : ObservableObject {
                     return stockArr.symbol.contains(textSearch) ||
                             stockArr.symbol.lowercased().contains(textSearch.lowercased())
                 }
+            
                 
+            })
+            .debounce(for: .seconds(0.75), scheduler: DispatchQueue.main)
+            .combineLatest($searchText, getQuotesService.$searchResultArray, { resultArray, searchText, searchResultArray in
+                
+                print("resultArray count => \(resultArray.count)")
+                
+                
+                if (resultArray.isEmpty) {
+                    if (searchResultArray.isEmpty && !searchText.isEmpty) {
+                        self.getQuotesService.getStockQuotesSearch(tickerSymbol: searchText)
+                        print("hit!!!")
+                    }
+                    
+                    print("\(searchResultArray.count) ---- \(resultArray.count) ***** if ******* \(searchText)")
+                    return searchResultArray.filter { result in
+                        
+                        return true
+                    }
+                    
+                    
+                }
+                else {
+                    self.getQuotesService.searchResultArray = []
+                    return resultArray
+                    print("\(resultArray) ***** else ****** \(searchText)")
+                }
+                print("#### count => \(resultArray.count) /////////////  \(searchText)")
+
                 
             })
             .sink { [weak self] newStock in

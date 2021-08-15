@@ -10,13 +10,16 @@ import SwiftUI
 struct StockHomeView: View {
     
     @State private var showPortfolio : Bool = false
+    @State private var showPortfolioSettingsView : Bool = false // sheet view
     @EnvironmentObject private var stockHomeViewModel : StockHomeViewModel
     
     var body: some View {
         
         ZStack {
             Color.theme.background.ignoresSafeArea()
-            
+                .sheet(isPresented: $showPortfolioSettingsView, content: {
+                    PortfolioSettingView()
+                })
             
             VStack {
                 homeHeader
@@ -48,6 +51,9 @@ struct StockHomeView: View {
                 
                 Spacer(minLength: 0)
             }
+            .onTapGesture {
+                UIApplication.shared.endEditing()
+            }
             
         }
         
@@ -70,6 +76,11 @@ extension StockHomeView {
         HStack {
             CircleButtonView(iconeName: showPortfolio ? "plus" : "info")
                 .animation(.none)
+                .onTapGesture {
+                    if showPortfolio {
+                        showPortfolioSettingsView.toggle()
+                    }
+                }
                 .background(
                     CircleButtonAnimationView(animate: $showPortfolio)
                 )
