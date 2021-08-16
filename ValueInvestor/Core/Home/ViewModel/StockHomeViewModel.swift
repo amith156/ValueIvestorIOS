@@ -10,7 +10,6 @@ import Combine
 class StockHomeViewModel : ObservableObject {
     
     @Published var arrayStocks : [Result] = []
-    @Published var portfolioStocks : [Result] = []
     @Published var searchText : String = ""
     @Published var statModelArray : [ETFModel] = [
         ETFModel(title: "SPY", value: "$700.4B", percentChange: 4.2),

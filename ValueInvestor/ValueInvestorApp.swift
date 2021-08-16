@@ -12,6 +12,12 @@ struct ValueInvestorApp: App {
     
     @StateObject private var stockHomeViewModel = StockHomeViewModel()
     
+    init() {
+        UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
+    }
+    
+    
     var body: some Scene {
         WindowGroup {
             NavigationView {
