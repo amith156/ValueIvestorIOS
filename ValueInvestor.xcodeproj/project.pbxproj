@@ -21,6 +21,8 @@
 		5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */; };
 		5875007326BDA5F100870535 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007226BDA5F100870535 /* Double.swift */; };
 		5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007426BDA93B00870535 /* PreviewProvider.swift */; };
+		5899270A26CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5899270826CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld */; };
+		5899270C26CAB72200D2C857 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5899270B26CAB72200D2C857 /* PortfolioDataService.swift */; };
 		58C845A526C89B6300201590 /* PortfolioSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C845A426C89B6300201590 /* PortfolioSettingView.swift */; };
 		58C845A726C89E3800201590 /* XMarkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C845A626C89E3800201590 /* XMarkButtonView.swift */; };
 		58CA366E26C8EF42002C47ED /* PortfolioSettingStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CA366D26C8EF42002C47ED /* PortfolioSettingStockView.swift */; };
@@ -68,6 +70,8 @@
 		5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
 		5875007226BDA5F100870535 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		5875007426BDA93B00870535 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		5899270926CAB62C00D2C857 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
+		5899270B26CAB72200D2C857 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
 		58C845A426C89B6300201590 /* PortfolioSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSettingView.swift; sourceTree = "<group>"; };
 		58C845A626C89E3800201590 /* XMarkButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButtonView.swift; sourceTree = "<group>"; };
 		58CA366D26C8EF42002C47ED /* PortfolioSettingStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSettingStockView.swift; sourceTree = "<group>"; };
@@ -118,6 +122,8 @@
 			isa = PBXGroup;
 			children = (
 				5823163626C2424B006A2075 /* GetQuotesService.swift */,
+				5899270826CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld */,
+				5899270B26CAB72200D2C857 /* PortfolioDataService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -437,6 +443,8 @@
 				58C845A726C89E3800201590 /* XMarkButtonView.swift in Sources */,
 				5875007326BDA5F100870535 /* Double.swift in Sources */,
 				5823163926C248BE006A2075 /* URLComponents.swift in Sources */,
+				5899270C26CAB72200D2C857 /* PortfolioDataService.swift in Sources */,
+				5899270A26CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +783,19 @@
 			productName = SwiftUICharts;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		5899270826CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5899270926CAB62C00D2C857 /* PortfolioContainer.xcdatamodel */,
+			);
+			currentVersion = 5899270926CAB62C00D2C857 /* PortfolioContainer.xcdatamodel */;
+			path = PortfolioContainer.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 58CC649626826E9100994D66 /* Project object */;
 }

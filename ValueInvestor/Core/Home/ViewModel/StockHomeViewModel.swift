@@ -11,6 +11,7 @@ class StockHomeViewModel : ObservableObject {
     
     @Published var arrayStocks : [Result] = []
     @Published var searchText : String = ""
+    @Published var portfolioStocks : [Result] = []
     @Published var statModelArray : [ETFModel] = [
         ETFModel(title: "SPY", value: "$700.4B", percentChange: 4.2),
         ETFModel(title: "QQQ", value: "$342.7B", percentChange: -3.7),
@@ -19,9 +20,11 @@ class StockHomeViewModel : ObservableObject {
         ETFModel(title: "Portfolio", value: "1.5M", percentChange: +42.3),
     ]
     
+    
+    
     private let getQuotesService = GetQuotesService()
     private var cancellable = Set<AnyCancellable>()
-    
+    private let portfolioDataService = PortfolioDataService()
     init() {
         
         addSubscribers()
@@ -29,17 +32,17 @@ class StockHomeViewModel : ObservableObject {
     
     
     func addSubscribers() {
-//        getQuotesService.$result.sink { [weak self] resultArray in
-//            self?.arrayStocks = resultArray
-//
-//        }
-//        .store(in: &cancellable)
+        //        getQuotesService.$result.sink { [weak self] resultArray in
+        //            self?.arrayStocks = resultArray
+        //
+        //        }
+        //        .store(in: &cancellable)
         
         
         $searchText
-            .combineLatest(getQuotesService.$result, getQuotesService.$searchResultArray)
+            .combineLatest(getQuotesService.$result)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
-            .map({ (textSearch, stockArray, searchResultArray) -> [Result] in
+            .map({ (textSearch, stockArray) -> [Result] in
                 
                 guard !textSearch.isEmpty else {
                     return stockArray
@@ -47,9 +50,9 @@ class StockHomeViewModel : ObservableObject {
                 
                 return stockArray.filter { stockArr in
                     return stockArr.symbol.contains(textSearch) ||
-                            stockArr.symbol.lowercased().contains(textSearch.lowercased())
+                        stockArr.symbol.lowercased().contains(textSearch.lowercased())
                 }
-            
+                
                 
             })
             .debounce(for: .seconds(0.75), scheduler: DispatchQueue.main)
@@ -62,6 +65,8 @@ class StockHomeViewModel : ObservableObject {
                     if (searchResultArray.isEmpty && !searchText.isEmpty) {
                         self.getQuotesService.getStockQuotesSearch(tickerSymbol: searchText)
                         print("hit!!!")
+                    } else {
+                        self.getQuotesService.searchResultArray = []
                     }
                     
                     print("\(searchResultArray.count) ---- \(resultArray.count) ***** if ******* \(searchText)")
@@ -73,12 +78,12 @@ class StockHomeViewModel : ObservableObject {
                     
                 }
                 else {
-                    self.getQuotesService.searchResultArray = []
+                    //                    self.getQuotesService.searchResultArray = []
                     return resultArray
                     print("\(resultArray) ***** else ****** \(searchText)")
                 }
                 print("#### count => \(resultArray.count) /////////////  \(searchText)")
-
+                
                 
             })
             .sink { [weak self] newStock in
@@ -104,7 +109,91 @@ class StockHomeViewModel : ObservableObject {
             .store(in: &cancellable)
         
         
+        
+//        portfolioDataService.$portfolioEntitySaved
+//            .combineLatest($portfolioStocks)
+//            .debounce(for: .seconds(3) , scheduler: DispatchQueue.main)
+//            .map { (entity, portfolio) in
+//                var portArr : [PortfolioEntity] = []
+//                
+//                
+//                let ent = entity.compactMap { ent in
+//                    ent
+//                }
+//                
+//                let pot = portfolio.compactMap { pot in
+//                    pot
+//                }
+//                var returnList : [PortfolioEntity] = []
+//                
+//                ent.forEach { emt in
+//                    var a = true
+//                    pot.forEach { pot in
+//                        if pot.symbol == emt.stockSymbol {
+//                            a = false
+//                        }
+//                    }
+//                    if a {
+//                        returnList.append(emt)
+//                    }
+//                }
+//                
+//                returnList.forEach { list in
+//                    self.getQuotesService.getStockQuotesSearch(tickerSymbol: list.stockSymbol!)
+//                    print("item ===> \(list.stockSymbol)")
+//                }
+//                
+//                
+//            }.sink { () in
+//                print("running")
+//            }.store(in: &cancellable)
+        
+        
+        
+        $arrayStocks
+            .combineLatest(portfolioDataService.$portfolioEntitySaved)
+            .map { (result, portfolioEntities) -> [Result] in
+                
+                var resultReturn =
+                    result.compactMap { currentResult -> Result? in
+                        
+                        guard let entity = portfolioEntities.first(where: { entity in
+                            print("=====> \(entity.stockSymbol) ====== \(currentResult.symbol) \n")
+                            return entity.stockSymbol == currentResult.symbol
+                        }) else {
+                            print("resultReturn =====> nil hit")
+                            return nil
+                        }
+                        print("added = bang!!!!!")
+                        //                        self.getQuotesService.getStockQuotesSearch(tickerSymbol: entity.stockSymbol!)
+                        return currentResult.updateHoldings(amount: entity.currentHoldings)
+                    }
+                
+                
+                return resultReturn
+                
+            }
+//            .combineLatest(portfolioDataService.$portfolioEntitySaved,  <#T##transform: ([Result], Publisher.Output) -> T##([Result], Publisher.Output) -> T#>)
+            .sink { [weak self] resultArray in
+                print("-----> \(resultArray.count)")
+                self?.portfolioStocks = resultArray
+            }
+            .store(in: &cancellable)
+        
     }
     
+    
+    
+    
+    
+    
+    func updatePortfolio(stock: Result, amount: Double) {
+        portfolioDataService.updatePortfolio(stock: stock, amount: amount)
+    }
+    
+    
+    func updateDB() {
+        portfolioDataService.getPortfolio()
+    }
     
 }

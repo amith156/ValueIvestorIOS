@@ -31,7 +31,7 @@ class NetworkManager {
     static func download(url: URL) -> AnyPublisher<Data, Error> {
         
         let requestURL = NSMutableURLRequest(url: url)
-        requestURL.addValue("c9ebe735b0msh5f2608e4e3af023p1a8335jsn8a907a5b3270", forHTTPHeaderField: "x-rapidapi-key")
+        requestURL.addValue("5d24937f4bmsh8dfb5d85065f33fp15a001jsnd6bc562839e9", forHTTPHeaderField: "x-rapidapi-key")
         
         return URLSession.shared.dataTaskPublisher(for: requestURL as URLRequest)
             .subscribe(on: DispatchQueue.global(qos: .default))

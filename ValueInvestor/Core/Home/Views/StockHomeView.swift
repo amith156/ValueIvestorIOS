@@ -124,7 +124,7 @@ extension StockHomeView {
     private var portfolioStockList : some View {
         List {
             
-            ForEach(stockHomeViewModel.arrayStocks, id: \.symbol) { stock in
+            ForEach(stockHomeViewModel.portfolioStocks, id: \.symbol) { stock in
                 StockRowView(getResult: stock, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
             }

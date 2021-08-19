@@ -20,6 +20,9 @@ struct PortfolioSettingView: View {
                 VStack {
                     
                     SearchBarView(searchText: $stockHomeViemModel.searchText)
+                        .autocapitalization(.allCharacters)
+                        .disableAutocorrection(true)
+                        .padding(.horizontal)
                     
                     stockSettingList
                     
@@ -45,6 +48,11 @@ struct PortfolioSettingView: View {
                     
                 }
                 
+            })
+            .onChange(of: stockHomeViemModel.searchText, perform: { value in
+                if(value == "") {
+                    unSelectStock()
+                }
             })
             
         }
@@ -158,11 +166,13 @@ extension PortfolioSettingView {
     private func saveButtonPressed() {
         
         
-        guard  let stock = selectedStock else {
+        guard  let stock = selectedStock, let amount = Double(sharesQuantity) else {
             return
         }
         
 //        save to Portfolio
+        stockHomeViemModel.updatePortfolio(stock: stock, amount: amount)
+        
         
 //        show Save Icon
         withAnimation(.easeIn) {
