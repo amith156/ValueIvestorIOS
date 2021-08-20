@@ -22,5 +22,16 @@ extension URLComponents {
     }
     
     
+    var getProfileURL : URL? {
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "apidojo-yahoo-finance-v1.p.rapidapi.com"
+        components.path = "/stock/v2/get-profile"
+        
+        return components.url
+        
+    }
+    
     
 }

@@ -13,6 +13,10 @@ struct StockHomeView: View {
     @State private var showPortfolioSettingsView : Bool = false // sheet view
     @EnvironmentObject private var stockHomeViewModel : StockHomeViewModel
     
+    @State private var selctedStock : Result? = nil
+    @State private var showDetailView : Bool = false
+    
+    
     var body: some View {
         
         ZStack {
@@ -57,7 +61,16 @@ struct StockHomeView: View {
             }
             
         }
+        .background(
         
+            NavigationLink(
+                destination: DetailLoadingView(result: $selctedStock),
+                isActive: $showDetailView,
+                label: {
+                    
+                    EmptyView()
+                })
+        )
         
     }
 }
@@ -115,6 +128,9 @@ extension StockHomeView {
             ForEach(stockHomeViewModel.arrayStocks, id: \.symbol) { stock in
                 StockRowView(getResult: stock, showHoldingsColumn: false)
                     .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        segue(result : stock)
+                    }
             }
             
         }
@@ -127,6 +143,9 @@ extension StockHomeView {
             ForEach(stockHomeViewModel.portfolioStocks, id: \.symbol) { stock in
                 StockRowView(getResult: stock, showHoldingsColumn: true)
                     .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+                    .onTapGesture {
+                        segue(result : stock)
+                    }
             }
             
         }
@@ -147,5 +166,13 @@ extension StockHomeView {
         .font(.caption)
         .foregroundColor(Color.theme.secondaryText)
     }
+    
+    
+    private func segue(result: Result) {
+        selctedStock = result
+        showDetailView.toggle()
+    }
+    
+    
     
 }
