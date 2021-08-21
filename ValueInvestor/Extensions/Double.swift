@@ -62,7 +62,7 @@ extension Double {
 //        formatter.currencyCode = "USD"
 //        formatter.currencySymbol = "$"
         formatter.minimumFractionDigits = 2
-        formatter.maximumFractionDigits = 6
+        formatter.maximumFractionDigits = 2
         
         return formatter
     }

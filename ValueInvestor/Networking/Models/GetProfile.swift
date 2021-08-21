@@ -4976,8 +4976,11 @@
 import Foundation
 
 struct GetProfile : Codable {
+    let price: Price?
+    let summaryDetail: SummaryDetail?
     let symbol: String?
     let assetProfile: AssetProfile?
+    let calendarEvents : CalendarEvents?
 }
 
 // MARK: - AssetProfile
@@ -4987,4 +4990,48 @@ struct AssetProfile : Codable {
     let country: String?
     let website: String?
     let address1, industry: String?
+}
+
+
+
+struct CalendarEvents : Codable {
+    let earnings : Earnings?
+}
+
+struct Earnings : Codable {
+    let revenueAverage : RevenueAverage?
+}
+
+struct RevenueAverage : Codable {
+    let fmt : String?
+}
+
+
+
+
+struct Price : Codable {
+    let regularMarketDayLow : RegularMarketDayLow?
+    let regularMarketDayHigh : RegularMarketDayHigh?
+}
+
+struct RegularMarketDayLow : Codable {
+    let raw : Double?
+    let fmt : String?
+}
+
+struct RegularMarketDayHigh : Codable {
+    let raw : Double?
+    let fmt : String?
+}
+
+
+
+
+struct SummaryDetail : Codable {
+    let marketCap: MarketCap?
+}
+
+struct MarketCap : Codable {
+    let raw: Int?
+    let fmt, longFmt: String?
 }

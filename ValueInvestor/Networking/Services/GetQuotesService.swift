@@ -48,7 +48,7 @@ class GetQuotesService {
         
         
         let requestURL = NSMutableURLRequest(url: url)
-        requestURL.addValue("c9ebe735b0msh5f2608e4e3af023p1a8335jsn8a907a5b3270", forHTTPHeaderField: "x-rapidapi-key")
+        requestURL.addValue("eead4428ecmshf9fa49e640c2d97p161881jsne769779e439d", forHTTPHeaderField: "x-rapidapi-key")
         
         NetworkManager.download(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
@@ -78,7 +78,7 @@ class GetQuotesService {
         
         
         let requestURL = NSMutableURLRequest(url: url)
-        requestURL.addValue("c9ebe735b0msh5f2608e4e3af023p1a8335jsn8a907a5b3270", forHTTPHeaderField: "x-rapidapi-key")
+        requestURL.addValue("eead4428ecmshf9fa49e640c2d97p161881jsne769779e439d", forHTTPHeaderField: "x-rapidapi-key")
         
         NetworkManager.download(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
@@ -110,7 +110,7 @@ class GetQuotesService {
         
         
         let requestURL = NSMutableURLRequest(url: url)
-        requestURL.addValue("c9ebe735b0msh5f2608e4e3af023p1a8335jsn8a907a5b3270", forHTTPHeaderField: "x-rapidapi-key")
+        requestURL.addValue("eead4428ecmshf9fa49e640c2d97p161881jsne769779e439d", forHTTPHeaderField: "x-rapidapi-key")
         
         NetworkManager.download(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
