@@ -15,6 +15,8 @@ class DetailViewModel: ObservableObject {
     
     @Published var result : Result
     
+    @Published var discription : String = ""
+    
     private let stockDetailDataService : StockDetailDataService
     private var cancellables = Set<AnyCancellable>()
     
@@ -81,6 +83,18 @@ class DetailViewModel: ObservableObject {
                 
                 
             }.store(in: &cancellables)
+        
+        
+        
+        stockDetailDataService.$businessSummary
+            .sink { recivedBusinessSummary in
+                self.discription = recivedBusinessSummary
+            }
+            .store(in: &cancellables)
+        
+        
+        
+        
     }
     
     

@@ -12,13 +12,15 @@ struct PortfolioSettingView: View {
     @State private var selectedStock : Result? = nil
     @State private var sharesQuantity: String = ""
     @State private var showSave: Bool = false
+    @State private var selectionPicker : String = "Stocks"
+    
     @EnvironmentObject private var stockHomeViemModel : StockHomeViewModel
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    
+                    Text("\(selectionPicker)")
                     SearchBarView(searchText: $stockHomeViemModel.searchText)
                         .autocapitalization(.allCharacters)
                         .disableAutocorrection(true)
@@ -30,8 +32,24 @@ struct PortfolioSettingView: View {
                         
                         Divider()
                             .padding(.bottom)
-                        portfolioInputBlock
                         
+                        Picker(selection: $selectionPicker,
+                               label: Text("Picker"),
+                               content: {
+                            Text("Stocks").tag("Stocks")
+                            Text("Options").tag("Options")
+                        })
+                            .pickerStyle(SegmentedPickerStyle())
+                            .padding(.bottom)
+                            .padding(.horizontal)
+                        if selectionPicker == "Stocks" {
+                            portfolioInputBlock
+//                                .transition(.move(edge: .trailing))
+                        }
+                        else {
+                            portfolioInputBlock
+//                                .transition(.move(edge: .leading))
+                        }
                     }
                     
                     

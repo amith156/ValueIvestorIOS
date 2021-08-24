@@ -50,7 +50,7 @@ class GetQuotesService {
         let requestURL = NSMutableURLRequest(url: url)
         requestURL.addValue("eead4428ecmshf9fa49e640c2d97p161881jsne769779e439d", forHTTPHeaderField: "x-rapidapi-key")
         
-        NetworkManager.download(url: url)
+        getQuoteCancellables = NetworkManager.download(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
             .sink(receiveCompletion: { completion in
                 NetworkManager.handleCompletion(completion: completion)

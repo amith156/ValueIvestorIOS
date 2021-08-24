@@ -11,6 +11,7 @@ import Combine
 class StockDetailDataService {
     
     @Published var profile : GetProfile? = nil
+    @Published var businessSummary : String = ""
     let result: Result
     var detailSubscription : AnyCancellable?
     
@@ -58,6 +59,7 @@ class StockDetailDataService {
                 print("-------->\(receivedGetSummary)")
 
                 self?.profile = receivedGetSummary
+                self?.businessSummary = receivedGetSummary.assetProfile?.longBusinessSummary ?? ""
                 self?.detailSubscription?.cancel()
             })
     }

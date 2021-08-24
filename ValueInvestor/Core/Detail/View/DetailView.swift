@@ -27,6 +27,9 @@ struct DetailLoadingView: View {
 struct DetailView: View {
     
     @StateObject var detailViewModel : DetailViewModel
+    @State private var showDiscriptionFull : Bool = false
+    private var result : Result
+    
     private let column: [GridItem] = [
         GridItem(.flexible()),
         GridItem(.flexible())
@@ -34,6 +37,7 @@ struct DetailView: View {
     private let spacing : CGFloat = 30
     
     init(result : Result) {
+        self.result = result
         _detailViewModel = StateObject(wrappedValue: DetailViewModel(result: result))
         
         print("initializing detail screen for \(result.symbol)")
@@ -43,12 +47,44 @@ struct DetailView: View {
         
         ScrollView {
             VStack(spacing: 20) {
-                Text((detailViewModel.result.shortName ?? detailViewModel.result.longName) ?? detailViewModel.result.symbol)
-                    .frame(height: 150)
-                
+                HStack {
+                    Spacer()
+                    Text((detailViewModel.result.shortName ?? detailViewModel.result.longName) ?? detailViewModel.result.symbol)
+                        .font(.headline)
+                    
+                }
+                    
+                StockChartView(result: result)
                 overviewTitle
                 Divider()
 
+                ZStack {
+                    VStack(alignment: .leading) {
+                        Text("\(detailViewModel.discription)")
+                            .lineLimit(showDiscriptionFull ? nil : 3)
+                            .font(.callout)
+                            .foregroundColor(Color.theme.secondaryText)
+                        
+                        
+                        Button(action: {
+                            withAnimation(.easeInOut) {
+                                showDiscriptionFull.toggle()
+                            }
+                            
+                        }, label: {
+                            Text(showDiscriptionFull ? "Read less..." : "Read more...")
+                                .font(.caption)
+                                .fontWeight(.bold)
+                                .padding(.vertical, 4)
+                        })
+                        .accentColor(.blue)
+                        
+                    }
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
+                
+                
                 overviewGrid
                 
                 

@@ -21,8 +21,14 @@
 		5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */; };
 		5875007326BDA5F100870535 /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007226BDA5F100870535 /* Double.swift */; };
 		5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5875007426BDA93B00870535 /* PreviewProvider.swift */; };
+		589025C026D16CA2003919CC /* StockChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589025BF26D16CA2003919CC /* StockChartView.swift */; };
+		589025C226D16E1C003919CC /* StockChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589025C126D16E1C003919CC /* StockChartViewModel.swift */; };
+		589025C426D1778A003919CC /* GetChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589025C326D1778A003919CC /* GetChart.swift */; };
+		589025C626D18752003919CC /* GetChartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589025C526D18752003919CC /* GetChartService.swift */; };
 		5899270A26CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5899270826CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld */; };
 		5899270C26CAB72200D2C857 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5899270B26CAB72200D2C857 /* PortfolioDataService.swift */; };
+		58A4AC0126D2FE4B009764DC /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4AC0026D2FE4B009764DC /* Date.swift */; };
+		58A4AC0326D302A4009764DC /* Int.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A4AC0226D302A4009764DC /* Int.swift */; };
 		58C845A526C89B6300201590 /* PortfolioSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C845A426C89B6300201590 /* PortfolioSettingView.swift */; };
 		58C845A726C89E3800201590 /* XMarkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C845A626C89E3800201590 /* XMarkButtonView.swift */; };
 		58CA366E26C8EF42002C47ED /* PortfolioSettingStockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CA366D26C8EF42002C47ED /* PortfolioSettingStockView.swift */; };
@@ -74,8 +80,14 @@
 		5875007026BD96CB00870535 /* CircleButtonAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleButtonAnimationView.swift; sourceTree = "<group>"; };
 		5875007226BDA5F100870535 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		5875007426BDA93B00870535 /* PreviewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewProvider.swift; sourceTree = "<group>"; };
+		589025BF26D16CA2003919CC /* StockChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartView.swift; sourceTree = "<group>"; };
+		589025C126D16E1C003919CC /* StockChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockChartViewModel.swift; sourceTree = "<group>"; };
+		589025C326D1778A003919CC /* GetChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChart.swift; sourceTree = "<group>"; };
+		589025C526D18752003919CC /* GetChartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChartService.swift; sourceTree = "<group>"; };
 		5899270926CAB62C00D2C857 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 		5899270B26CAB72200D2C857 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
+		58A4AC0026D2FE4B009764DC /* Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
+		58A4AC0226D302A4009764DC /* Int.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Int.swift; sourceTree = "<group>"; };
 		58C845A426C89B6300201590 /* PortfolioSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSettingView.swift; sourceTree = "<group>"; };
 		58C845A626C89E3800201590 /* XMarkButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButtonView.swift; sourceTree = "<group>"; };
 		58CA366D26C8EF42002C47ED /* PortfolioSettingStockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSettingStockView.swift; sourceTree = "<group>"; };
@@ -131,6 +143,7 @@
 			children = (
 				5823163626C2424B006A2075 /* GetQuotesService.swift */,
 				58D39F2A26CF24C600E349E4 /* StockDetailDataService.swift */,
+				589025C526D18752003919CC /* GetChartService.swift */,
 				5899270826CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld */,
 				5899270B26CAB72200D2C857 /* PortfolioDataService.swift */,
 			);
@@ -163,6 +176,7 @@
 				584CC75A269DF45500B2D795 /* GetQuotes.swift */,
 				586830DF26C7C2FB002538D9 /* ETFModel.swift */,
 				58D39F2626CF1A8C00E349E4 /* GetProfile.swift */,
+				589025C326D1778A003919CC /* GetChart.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				58D39F2826CF247F00E349E4 /* DetailViewModel.swift */,
+				589025C126D16E1C003919CC /* StockChartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -256,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				58D39F2426CF0A7C00E349E4 /* DetailView.swift */,
+				589025BF26D16CA2003919CC /* StockChartView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -318,6 +334,8 @@
 				5823163826C248BE006A2075 /* URLComponents.swift */,
 				5823163A26C2504E006A2075 /* URL.swift */,
 				586830D926C7874E002538D9 /* UIApplication.swift */,
+				58A4AC0026D2FE4B009764DC /* Date.swift */,
+				58A4AC0226D302A4009764DC /* Int.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -473,15 +491,21 @@
 				58D39F2B26CF24C600E349E4 /* StockDetailDataService.swift in Sources */,
 				586830E226C7C424002538D9 /* StatsView.swift in Sources */,
 				586830E026C7C2FB002538D9 /* ETFModel.swift in Sources */,
+				589025C026D16CA2003919CC /* StockChartView.swift in Sources */,
 				5823163726C2424B006A2075 /* GetQuotesService.swift in Sources */,
 				58E162C126C016FE00D57F12 /* StockRowView.swift in Sources */,
+				58A4AC0126D2FE4B009764DC /* Date.swift in Sources */,
+				589025C626D18752003919CC /* GetChartService.swift in Sources */,
 				5875007526BDA93B00870535 /* PreviewProvider.swift in Sources */,
+				589025C226D16E1C003919CC /* StockChartViewModel.swift in Sources */,
+				58A4AC0326D302A4009764DC /* Int.swift in Sources */,
 				5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */,
 				58F8A22A26C3F6BA00BA903B /* NetworkManager.swift in Sources */,
 				58CA366E26C8EF42002C47ED /* PortfolioSettingStockView.swift in Sources */,
 				5836B87326C0CC8000530476 /* StockHomeViewModel.swift in Sources */,
 				58C845A726C89E3800201590 /* XMarkButtonView.swift in Sources */,
 				5875007326BDA5F100870535 /* Double.swift in Sources */,
+				589025C426D1778A003919CC /* GetChart.swift in Sources */,
 				5823163926C248BE006A2075 /* URLComponents.swift in Sources */,
 				5899270C26CAB72200D2C857 /* PortfolioDataService.swift in Sources */,
 				5899270A26CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld in Sources */,

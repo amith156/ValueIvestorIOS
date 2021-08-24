@@ -34,4 +34,17 @@ extension URLComponents {
     }
     
     
+    var getChartURL : URL? {
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "apidojo-yahoo-finance-v1.p.rapidapi.com"
+        components.path = "/stock/v2/get-chart"
+        
+        return components.url
+        
+    }
+    
+    
+    
 }
