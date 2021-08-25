@@ -28,19 +28,19 @@ class PortfolioDataService {
         
     }
     
-    func updatePortfolio(stock:Result, amount: Double) {
+    func updatePortfolio(stock:Result, amount: Double, buyingPrice : Double) {
         
         if let entity = portfolioEntitySaved.first(where: { savedEntity -> Bool in
             return savedEntity.stockSymbol == stock.symbol
         }) {
             if amount > 0 {
-                update(entity: entity, amount: amount)
+                update(entity: entity, amount: amount, buyingPrice: buyingPrice)
             } else {
                 removePortfolio(entity: entity)
             }
         }
         else {
-            add(result: stock, amount: amount)
+            add(result: stock, amount: amount, buyingPrice: buyingPrice)
         }
         
         
@@ -62,11 +62,12 @@ class PortfolioDataService {
     }
     
     
-    private func add(result : Result, amount : Double) {
+    private func add(result : Result, amount : Double, buyingPrice : Double) {
         
         let entity = PortfolioEntity(context: container.viewContext)
         entity.stockSymbol = result.symbol
         entity.currentHoldings = amount
+        entity.buyingStockPrice = buyingPrice
         changesApply()
         
     }
@@ -76,8 +77,9 @@ class PortfolioDataService {
         changesApply()
     }
     
-    func update(entity: PortfolioEntity, amount: Double) {
+    func update(entity: PortfolioEntity, amount: Double, buyingPrice : Double) {
         entity.currentHoldings = amount
+        entity.buyingStockPrice = buyingPrice
         changesApply()
     }
     

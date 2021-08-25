@@ -38,6 +38,7 @@
 		58CC64A926826E9200994D66 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 58CC64A826826E9200994D66 /* Preview Assets.xcassets */; };
 		58CC64B426826E9200994D66 /* ValueInvestorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64B326826E9200994D66 /* ValueInvestorTests.swift */; };
 		58CC64BF26826E9200994D66 /* ValueInvestorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */; };
+		58CD122926D5CF2A00C4561F /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CD122826D5CF2A00C4561F /* ApiKey.swift */; };
 		58D1E4C226A1D054009DD233 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 58D1E4C126A1D054009DD233 /* SwiftUICharts */; };
 		58D39F2526CF0A7C00E349E4 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D39F2426CF0A7C00E349E4 /* DetailView.swift */; };
 		58D39F2726CF1A8C00E349E4 /* GetProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D39F2626CF1A8C00E349E4 /* GetProfile.swift */; };
@@ -103,6 +104,7 @@
 		58CC64BA26826E9200994D66 /* ValueInvestorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ValueInvestorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58CC64BE26826E9200994D66 /* ValueInvestorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValueInvestorUITests.swift; sourceTree = "<group>"; };
 		58CC64C026826E9200994D66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58CD122826D5CF2A00C4561F /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
 		58D39F2426CF0A7C00E349E4 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		58D39F2626CF1A8C00E349E4 /* GetProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProfile.swift; sourceTree = "<group>"; };
 		58D39F2826CF247F00E349E4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				586830D926C7874E002538D9 /* UIApplication.swift */,
 				58A4AC0026D2FE4B009764DC /* Date.swift */,
 				58A4AC0226D302A4009764DC /* Int.swift */,
+				58CD122826D5CF2A00C4561F /* ApiKey.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 				589025C226D16E1C003919CC /* StockChartViewModel.swift in Sources */,
 				58A4AC0326D302A4009764DC /* Int.swift in Sources */,
 				5875007126BD96CB00870535 /* CircleButtonAnimationView.swift in Sources */,
+				58CD122926D5CF2A00C4561F /* ApiKey.swift in Sources */,
 				58F8A22A26C3F6BA00BA903B /* NetworkManager.swift in Sources */,
 				58CA366E26C8EF42002C47ED /* PortfolioSettingStockView.swift in Sources */,
 				5836B87326C0CC8000530476 /* StockHomeViewModel.swift in Sources */,

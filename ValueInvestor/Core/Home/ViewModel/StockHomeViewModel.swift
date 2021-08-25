@@ -109,6 +109,50 @@ class StockHomeViewModel : ObservableObject {
             .store(in: &cancellable)
         
         
+//        portfolioDataService.$portfolioEntitySaved
+//            .map { entity -> Int in
+//
+//                entity.map { entityItem in
+//                    self.getQuotesService.downloadGetQuotesDB(tickerSymbols: entityItem.stockSymbol ?? "")
+//                }
+//                return 0
+//            }
+//            .sink { item in
+//
+//            }.store(in: &cancellable)
+        
+        
+//        getQuotesService.$portfolioDB
+//            .combineLatest(getQuotesService.$result)
+//            .map { (db, result) -> () in
+//
+//
+//                db.map { dbResult in
+//
+//                    if (result.contains(where: { result in
+//                        return result.symbol == dbResult.symbol
+//                    })) {
+//
+//                    } else {
+//                        print("search stock => \(dbResult.symbol) ")
+//                        self.getQuotesService.getStockQuotesSearch(tickerSymbol: dbResult.symbol)
+//                    }
+//
+//
+////                    let x = result.first { result in
+////                        if dbResult.symbol == result.symbol {
+////                            return false
+////                        } else {
+////                            return true
+////                        }
+////                    }
+//
+//                }
+//            }
+//            .sink { val in
+//
+//            }.store(in: &cancellable)
+        
         
 //        portfolioDataService.$portfolioEntitySaved
 //            .combineLatest($portfolioStocks)
@@ -166,13 +210,14 @@ class StockHomeViewModel : ObservableObject {
                         }
                         print("added = bang!!!!!")
                         //                        self.getQuotesService.getStockQuotesSearch(tickerSymbol: entity.stockSymbol!)
-                        return currentResult.updateHoldings(amount: entity.currentHoldings)
+                        return currentResult.updateHoldings(amount: entity.currentHoldings, priceBought: entity.buyingStockPrice)
                     }
                 
                 
                 return resultReturn
                 
             }
+            
 //            .combineLatest(portfolioDataService.$portfolioEntitySaved,  <#T##transform: ([Result], Publisher.Output) -> T##([Result], Publisher.Output) -> T#>)
             .sink { [weak self] resultArray in
                 print("-----> \(resultArray.count)")
@@ -187,8 +232,8 @@ class StockHomeViewModel : ObservableObject {
     
     
     
-    func updatePortfolio(stock: Result, amount: Double) {
-        portfolioDataService.updatePortfolio(stock: stock, amount: amount)
+    func updatePortfolio(stock: Result, amount: Double, buyingPrice : Double) {
+        portfolioDataService.updatePortfolio(stock: stock, amount: amount, buyingPrice: buyingPrice)
     }
     
     

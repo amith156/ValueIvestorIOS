@@ -11,6 +11,7 @@ struct PortfolioSettingView: View {
     
     @State private var selectedStock : Result? = nil
     @State private var sharesQuantity: String = ""
+    @State private var singleSharePrice : String = ""
     @State private var showSave: Bool = false
     @State private var selectionPicker : String = "Stocks"
     
@@ -88,8 +89,8 @@ struct PortfolioSettingView_Previews: PreviewProvider {
 extension PortfolioSettingView {
     
     private func getCurrentValueStocks() -> Double {
-        if let quantity = Double(sharesQuantity) {
-            return quantity * (selectedStock?.regularMarketPrice ?? 0)
+        if let quantity = Double(sharesQuantity), let buyingPrice = Double(singleSharePrice) {
+            return quantity * (selectedStock?.regularMarketPrice ?? 0) - (quantity * buyingPrice)
         } else {
             return 0
         }
@@ -147,6 +148,16 @@ extension PortfolioSettingView {
             
             Divider()
             HStack {
+                Text("Buying share price")
+                Spacer()
+                TextField("Ex $25", text: $singleSharePrice)
+                    .keyboardType(.decimalPad)
+                    .multilineTextAlignment(.trailing)
+            }
+            
+            
+            Divider()
+            HStack {
                 Text("Current value")
                 Spacer()
                 Text(getCurrentValueStocks().asCurrencyWith2Decimals())
@@ -184,12 +195,12 @@ extension PortfolioSettingView {
     private func saveButtonPressed() {
         
         
-        guard  let stock = selectedStock, let amount = Double(sharesQuantity) else {
+        guard  let stock = selectedStock, let amount = Double(sharesQuantity), let buyingPrice = Double(singleSharePrice) else {
             return
         }
         
 //        save to Portfolio
-        stockHomeViemModel.updatePortfolio(stock: stock, amount: amount)
+        stockHomeViemModel.updatePortfolio(stock: stock, amount: amount, buyingPrice: buyingPrice)
         
         
 //        show Save Icon

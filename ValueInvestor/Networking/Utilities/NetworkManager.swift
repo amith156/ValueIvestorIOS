@@ -31,7 +31,7 @@ class NetworkManager {
     static func download(url: URL) -> AnyPublisher<Data, Error> {
         
         let headers = [
-            "x-rapidapi-key" : "eead4428ecmshf9fa49e640c2d97p161881jsne769779e439d",
+            "x-rapidapi-key" : ApiKey.YahooFinanceKey,
             "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
         ]
 

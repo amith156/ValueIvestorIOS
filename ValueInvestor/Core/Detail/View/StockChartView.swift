@@ -33,7 +33,7 @@ struct StockChartView: View {
                 .background(chartBackground)
                 .overlay(chartYAxisValues, alignment: .leading)
             
-
+            chartXAxisValues
             
         }
         .font(.caption)
@@ -116,11 +116,12 @@ extension StockChartView {
             
             Text(stockChartViewModel.maxY.asCurrencyWith2Decimals())
             Spacer()
-            Text((stockChartViewModel.median + ((stockChartViewModel.maxY + stockChartViewModel.minY)/6)).asCurrencyWith2Decimals())
+            Text((((stockChartViewModel.maxY - stockChartViewModel.minY)/4) + stockChartViewModel.median).asCurrencyWith2Decimals())
             Spacer()
             Text((stockChartViewModel.median).asCurrencyWith2Decimals())
             Spacer()
-            Text((stockChartViewModel.minY + (stockChartViewModel.median / 2)).asCurrencyWith2Decimals())
+//            Text((stockChartViewModel.minY + (stockChartViewModel.median / 2)).asCurrencyWith2Decimals())
+            Text((((stockChartViewModel.maxY - stockChartViewModel.minY)/4) - stockChartViewModel.median).asCurrencyWith2Decimals())
             Spacer()
             Text(stockChartViewModel.minY.asCurrencyWith2Decimals())
         }

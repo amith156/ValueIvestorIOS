@@ -11,6 +11,7 @@ import Combine
 class GetQuotesService {
     
     @Published var result : [Result] = []
+    @Published var portfolioDB : [Result] = []
     @Published var searchResultArray : [Result] = []
     @Published var etfResult : [Result] = []
     @Published var getQuotes : GetQuotes = GetQuotes(quoteResponse: nil)
@@ -48,7 +49,7 @@ class GetQuotesService {
         
         
         let requestURL = NSMutableURLRequest(url: url)
-        requestURL.addValue("eead4428ecmshf9fa49e640c2d97p161881jsne769779e439d", forHTTPHeaderField: "x-rapidapi-key")
+        requestURL.addValue(ApiKey.YahooFinanceKey, forHTTPHeaderField: "x-rapidapi-key")
         
         getQuoteCancellables = NetworkManager.download(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
@@ -78,7 +79,7 @@ class GetQuotesService {
         
         
         let requestURL = NSMutableURLRequest(url: url)
-        requestURL.addValue("eead4428ecmshf9fa49e640c2d97p161881jsne769779e439d", forHTTPHeaderField: "x-rapidapi-key")
+        requestURL.addValue(ApiKey.YahooFinanceKey, forHTTPHeaderField: "x-rapidapi-key")
         
         NetworkManager.download(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
@@ -89,7 +90,9 @@ class GetQuotesService {
                 guard let resultArray = receivedGetQuotes.quoteResponse?.result else {
                     return
                 }
-                self?.result.append(resultArray[0])
+//                self?.result.append(resultArray[0])
+                self?.portfolioDB.append(resultArray[0])
+                print("port count -> \(self?.portfolioDB.count)")
                 self?.getQuoteCancellables?.cancel()
             })
     }
@@ -110,7 +113,7 @@ class GetQuotesService {
         
         
         let requestURL = NSMutableURLRequest(url: url)
-        requestURL.addValue("eead4428ecmshf9fa49e640c2d97p161881jsne769779e439d", forHTTPHeaderField: "x-rapidapi-key")
+        requestURL.addValue(ApiKey.YahooFinanceKey, forHTTPHeaderField: "x-rapidapi-key")
         
         NetworkManager.download(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())

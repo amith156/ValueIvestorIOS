@@ -23,7 +23,7 @@ class GetChartService {
     //range => 1d|5d|1mo|3mo|6mo|1y|2y|5y|10y|ytd|max
     init(result : Result) {
         self.result = result
-        getChartData(symbol: result.symbol, interval: "5m", range: "1d")
+        getChartData(symbol: result.symbol, interval: "1d", range: "1y")
         
     }
     

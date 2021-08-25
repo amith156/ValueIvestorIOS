@@ -27,7 +27,7 @@ class StockDetailDataService {
         //        https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary?region=US&symbol=AMRN
         
         let headers = [
-            "x-rapidapi-key" : "5d24937f4bmsh8dfb5d85065f33fp15a001jsnd6bc562839e9",
+            "x-rapidapi-key" : ApiKey.YahooFinanceKey,
             "x-rapidapi-host": "apidojo-yahoo-finance-v1.p.rapidapi.com"
         ]
         
