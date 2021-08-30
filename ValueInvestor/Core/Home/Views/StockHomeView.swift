@@ -138,18 +138,33 @@ extension StockHomeView {
     }
     
     private var portfolioStockList : some View {
-        List {
-            
-            ForEach(stockHomeViewModel.portfolioStocks, id: \.symbol) { stock in
-                StockRowView(getResult: stock, showHoldingsColumn: true)
-                    .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
-                    .onTapGesture {
-                        segue(result : stock)
+        VStack {
+            List {
+                
+                Section(header: Text("Stocks").font(.title3)) {
+                    ForEach(stockHomeViewModel.portfolioStocks, id: \.symbol) { stock in
+                        StockRowView(getResult: stock, showHoldingsColumn: true)
+                            .listRowInsets(.init(top: 10, leading: 10, bottom: 10, trailing: 10))
+                            .onTapGesture {
+                                segue(result : stock)
+                            }
                     }
+                }
+                
+                Section(header: Text("Options").font(.title3)) {
+                    
+                    
+                    
+                    
+                    
+                }
+                
+                
+                
             }
-            
+            .listStyle(GroupedListStyle())
         }
-        .listStyle(PlainListStyle())
+        
     }
     
     

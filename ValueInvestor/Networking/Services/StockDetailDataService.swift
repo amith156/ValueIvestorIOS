@@ -51,7 +51,7 @@ class StockDetailDataService {
         requestURL.cachePolicy = .useProtocolCachePolicy
         requestURL.timeoutInterval = 10.0
         
-        detailSubscription = NetworkManager.download(url: url)
+        detailSubscription = NetworkManager.downloadYahoo(url: url)
             .decode(type: GetProfile.self, decoder: JSONDecoder())
             .sink(receiveCompletion: { completion in
                 NetworkManager.handleCompletion(completion: completion)

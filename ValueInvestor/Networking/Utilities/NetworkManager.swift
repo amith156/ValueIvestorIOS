@@ -28,7 +28,7 @@ class NetworkManager {
     
     
     
-    static func download(url: URL) -> AnyPublisher<Data, Error> {
+    static func downloadYahoo(url: URL) -> AnyPublisher<Data, Error> {
         
         let headers = [
             "x-rapidapi-key" : ApiKey.YahooFinanceKey,
@@ -53,6 +53,20 @@ class NetworkManager {
         
         
     }
+    
+    
+    static func downloadOptions(url: URL) -> AnyPublisher<Data, Error> {
+        return URLSession.shared.dataTaskPublisher(for: url)
+            .subscribe(on: DispatchQueue.global(qos: .default))
+            .tryMap({ data in
+                try handleURLResponce(output: data, url: url)
+            })
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+    
+    
+    
     
     static func handleURLResponce(output: URLSession.DataTaskPublisher.Output, url: URL) throws -> Data {
         

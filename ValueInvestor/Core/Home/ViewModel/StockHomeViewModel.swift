@@ -25,20 +25,16 @@ class StockHomeViewModel : ObservableObject {
     private let getQuotesService = GetQuotesService()
     private var cancellable = Set<AnyCancellable>()
     private let portfolioDataService = PortfolioDataService()
+//    private var getOptionChainService : GetOptionChainService
+    
     init() {
-        
+//        self.getOptionChainService = GetOptionChainService(tickerSymbol: "")
         addSubscribers()
     }
     
     
     func addSubscribers() {
-        //        getQuotesService.$result.sink { [weak self] resultArray in
-        //            self?.arrayStocks = resultArray
-        //
-        //        }
-        //        .store(in: &cancellable)
-        
-        
+
         $searchText
             .combineLatest(getQuotesService.$result)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)

@@ -15,13 +15,27 @@ struct PortfolioSettingView: View {
     @State private var showSave: Bool = false
     @State private var selectionPicker : String = "Stocks"
     
+    @State private var cllPutSelection : String = "CALL"
+    @State private var contractSize : Int = 1
+    @State private var expirationDate : String = ""
+    @State private var strickPrice : String = ""
+    @State private var askPrice : String = ""
+    
+    
     @EnvironmentObject private var stockHomeViemModel : StockHomeViewModel
+    @StateObject var portfolioSettingsViewModel : PortfolioSettingsViewModel = PortfolioSettingsViewModel()
+    
+//    init() {
+//        _portfolioSettingsViewModel = StateObject(wrappedValue: PortfolioSettingsViewModel(tickerSymbol: "AAPL"))
+//    }
+
+
     
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack {
-                    Text("\(selectionPicker)")
+//                    Text("\(selectionPicker)")
                     SearchBarView(searchText: $stockHomeViemModel.searchText)
                         .autocapitalization(.allCharacters)
                         .disableAutocorrection(true)
@@ -37,19 +51,24 @@ struct PortfolioSettingView: View {
                         Picker(selection: $selectionPicker,
                                label: Text("Picker"),
                                content: {
-                            Text("Stocks").tag("Stocks")
-                            Text("Options").tag("Options")
-                        })
+                                Text("Stocks").tag("Stocks")
+                                Text("Options").tag("Options")
+                               })
                             .pickerStyle(SegmentedPickerStyle())
                             .padding(.bottom)
                             .padding(.horizontal)
+                        
                         if selectionPicker == "Stocks" {
-                            portfolioInputBlock
-//                                .transition(.move(edge: .trailing))
+                            portfolioStockInputBlock
+                            //                                .transition(.move(edge: .trailing))
                         }
                         else {
-                            portfolioInputBlock
-//                                .transition(.move(edge: .leading))
+
+                            
+                            portfolioOptionsInputBlock
+
+                            //                            portfolioInputBlock
+                            //                                .transition(.move(edge: .leading))
                         }
                     }
                     
@@ -107,8 +126,11 @@ extension PortfolioSettingView {
                         .frame(width: 80)
                         .padding(5)
                         .onTapGesture {
+                            portfolioSettingsViewModel.getOption(tickerSymbole: item.symbol)
+                            resetOptionsData()
                             withAnimation(.easeIn) {
                                 selectedStock = item
+                                
                             }
                         }
                         
@@ -127,7 +149,7 @@ extension PortfolioSettingView {
         
     }
     
-    private var portfolioInputBlock : some View {
+    private var portfolioStockInputBlock : some View {
         
         VStack(spacing: 21) {
             
@@ -173,6 +195,145 @@ extension PortfolioSettingView {
     }
     
     
+    private var portfolioOptionsInputBlock : some View {
+        
+        
+        
+        VStack(spacing: 21) {
+            
+            Group {
+                HStack {
+                    Text("Current Price of \(selectedStock?.symbol.uppercased() ?? "")")
+                    Spacer()
+                    Text(selectedStock?.regularMarketPrice.asCurrencyWith2Decimals() ?? "")
+                }
+            }
+            
+            Group {
+                Divider()
+                HStack {
+                    Text("Option Type")
+                    Spacer()
+                    Picker(selection: $cllPutSelection,
+                           label:
+                            
+                            HStack {
+                                Text(cllPutSelection)
+                            }.foregroundColor(.blue),
+                           
+                           content: {
+                            Text("CALL").tag("CALL")
+                            Text("PUT").tag("PUT")
+                           })
+                        .pickerStyle(MenuPickerStyle())
+                }
+            }
+            
+            Group {
+                Divider()
+                HStack {
+                    Text("Contract Size : ")
+                    Spacer()
+                    
+                    Stepper(value: $contractSize, in: 1...100, step: 1) {
+                        Text("\(contractSize)")
+                    }
+                }
+                
+            }
+            
+            
+            Group {
+                Divider()
+                HStack {
+                    Text("Expiration Date")
+                    
+                    Spacer()
+                    
+                    Picker(selection: $expirationDate,
+                           label: HStack() {
+                            if expirationDate == "" {
+                                Text("Date")
+                            } else {
+                                Text("\(expirationDate)")
+                                
+                            }
+                            
+                            
+                           }.frame(alignment: .trailing)
+                           .foregroundColor(.blue),
+                           content: {
+//                            pickedDate(expirationDate: expirationDate)
+
+//                            self.portfolioSettingsViewModel.expirationDate.forEach { item in
+//                                Text("\(item)").tag("\(item)")
+//                            }
+//                            portfolioSettingsViewModel.expirationDate
+                            
+                            ForEach(portfolioSettingsViewModel.expirationDate, id: \.self) { item in
+                                Text("\(item)").tag("\(item)")
+                            }
+                            
+                            
+                           })
+                        .pickerStyle(MenuPickerStyle())
+                        .onReceive([self.expirationDate].publisher.first(), perform: { val in
+                            print("the val -----> \(val)")
+                            if let symbol = selectedStock?.symbol {
+                                portfolioSettingsViewModel.getOptionSpecfic(tickerSymbole: symbol, date: val)
+                            }
+                            
+                        })
+                    
+                }
+            }
+            
+            
+            Group {
+                Divider()
+                HStack {
+                    Text("Strick Price")
+                    Spacer()
+                    
+                    TextField("Ex $25", text: $strickPrice)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                    
+                }
+            }
+            
+            Group{
+                Divider()
+                HStack {
+                    Text("Ask Price")
+                    
+                    Spacer()
+                    
+                    TextField("19.55", text: $askPrice)
+                        .keyboardType(.decimalPad)
+                        .multilineTextAlignment(.trailing)
+                    
+                }
+            }
+            
+            Group {
+                Divider()
+                HStack {
+                    Text("Current value")
+                    Spacer()
+                    Text(getCurrentValueStocks().asCurrencyWith2Decimals())
+                }
+            }
+        }
+        .font(.headline)
+        .animation(.none)
+        .padding(.horizontal)
+        
+        
+        
+        
+    }
+    
     private var navigationTrailingBarButton : some View {
         
         
@@ -180,10 +341,10 @@ extension PortfolioSettingView {
             Image(systemName: "externaldrive.fill.badge.checkmark")
                 .opacity(showSave ? 1.0 : 0.0)
             Button(action: {
-                saveButtonPressed()
+                saveButtonPressedStock()
             }, label: {
                 Text("Save".uppercased())
-                    
+                
             })
             .opacity((selectedStock != nil && selectedStock?.currentStockHoldings != Double(sharesQuantity)) ? 1.0 : 0.0)
         }
@@ -192,25 +353,25 @@ extension PortfolioSettingView {
     
     
     
-    private func saveButtonPressed() {
+    private func saveButtonPressedStock() {
         
         
         guard  let stock = selectedStock, let amount = Double(sharesQuantity), let buyingPrice = Double(singleSharePrice) else {
             return
         }
         
-//        save to Portfolio
+        //        save to Portfolio
         stockHomeViemModel.updatePortfolio(stock: stock, amount: amount, buyingPrice: buyingPrice)
         
         
-//        show Save Icon
+        //        show Save Icon
         withAnimation(.easeIn) {
             showSave = true
             unSelectStock()
         }
         
         
-//        hide save icon
+        //        hide save icon
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.1) {
             withAnimation(.easeOut) {
                 showSave = false
@@ -218,7 +379,7 @@ extension PortfolioSettingView {
         }
         
         
-//        dismis Keyboard
+        //        dismis Keyboard
         UIApplication.shared.endEditing()
         
         
@@ -234,4 +395,12 @@ extension PortfolioSettingView {
     }
     
     
+    func resetOptionsData() {
+        cllPutSelection = "CALL"
+        contractSize = 1
+        expirationDate = ""
+        strickPrice = ""
+        askPrice = ""
+
+    }
 }

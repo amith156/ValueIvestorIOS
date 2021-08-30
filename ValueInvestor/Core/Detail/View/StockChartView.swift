@@ -121,7 +121,7 @@ extension StockChartView {
             Text((stockChartViewModel.median).asCurrencyWith2Decimals())
             Spacer()
 //            Text((stockChartViewModel.minY + (stockChartViewModel.median / 2)).asCurrencyWith2Decimals())
-            Text((((stockChartViewModel.maxY - stockChartViewModel.minY)/4) - stockChartViewModel.median).asCurrencyWith2Decimals())
+            Text(((stockChartViewModel.median - (stockChartViewModel.maxY - stockChartViewModel.minY)/4)  ).asCurrencyWith2Decimals())
             Spacer()
             Text(stockChartViewModel.minY.asCurrencyWith2Decimals())
         }

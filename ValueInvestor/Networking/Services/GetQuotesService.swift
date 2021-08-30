@@ -51,7 +51,7 @@ class GetQuotesService {
         let requestURL = NSMutableURLRequest(url: url)
         requestURL.addValue(ApiKey.YahooFinanceKey, forHTTPHeaderField: "x-rapidapi-key")
         
-        getQuoteCancellables = NetworkManager.download(url: url)
+        getQuoteCancellables = NetworkManager.downloadYahoo(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
             .sink(receiveCompletion: { completion in
                 NetworkManager.handleCompletion(completion: completion)
@@ -81,7 +81,7 @@ class GetQuotesService {
         let requestURL = NSMutableURLRequest(url: url)
         requestURL.addValue(ApiKey.YahooFinanceKey, forHTTPHeaderField: "x-rapidapi-key")
         
-        NetworkManager.download(url: url)
+        NetworkManager.downloadYahoo(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
             .sink(receiveCompletion: { completion in
                 NetworkManager.handleCompletion(completion: completion)
@@ -115,7 +115,7 @@ class GetQuotesService {
         let requestURL = NSMutableURLRequest(url: url)
         requestURL.addValue(ApiKey.YahooFinanceKey, forHTTPHeaderField: "x-rapidapi-key")
         
-        NetworkManager.download(url: url)
+        NetworkManager.downloadYahoo(url: url)
             .decode(type: GetQuotes.self, decoder: JSONDecoder())
             .sink(receiveCompletion: { completion in
                 NetworkManager.handleCompletion(completion: completion)

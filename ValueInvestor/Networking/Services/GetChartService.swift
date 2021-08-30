@@ -40,7 +40,7 @@ class GetChartService {
             return
         }
 
-        cancellable = NetworkManager.download(url: url)
+        cancellable = NetworkManager.downloadYahoo(url: url)
             .decode(type: GetChart.self, decoder: JSONDecoder())
             .sink(receiveCompletion: { completion in
                 NetworkManager.handleCompletion(completion: completion)

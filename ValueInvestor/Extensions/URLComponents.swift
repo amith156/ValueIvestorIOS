@@ -47,4 +47,29 @@ extension URLComponents {
     
     
     
+    var getOptionChainURL : URL? {
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "eodhistoricaldata.com"
+        components.path = "/api/options/"
+        
+        return components.url
+        
+    }
+    
+    
+    func getOptionURL(symbole : String) -> URL? {
+        
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "eodhistoricaldata.com"
+        components.path = "/api/options/\(symbole)"
+        
+        return components.url
+    }
+
+    
+    
+    
 }
