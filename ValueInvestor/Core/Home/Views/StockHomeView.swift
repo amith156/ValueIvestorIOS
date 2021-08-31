@@ -153,7 +153,7 @@ extension StockHomeView {
                 
                 Section(header: Text("Options").font(.title3)) {
                     
-                    
+//                    ForEach(portfolioSe, content: <#T##(_.Element) -> _#>)
                     
                     
                     
@@ -173,7 +173,7 @@ extension StockHomeView {
             Text("Ticker Symbol")
             Spacer()
             if(showPortfolio) {
-                Text("Holdings")
+                Text("Profit/Loss")
             }
             Text("Price").frame(width: UIScreen.main.bounds.width/3, alignment: .trailing)
         }

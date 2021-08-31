@@ -43,6 +43,24 @@ struct OptionData : Codable {
     let impliedVolatility, delta, gamma, theta: Double?
     let vega, rho, theoretical, intrinsicValue: Double?
     let daysBeforeExpiration: Int?
+    let stockSymbol : String?
+    let contractSize : Double?
+    let payedAsk : Double?
+    
+    
+    func updateOptionData(askPrice : Double, strickPrice : Double, stockSymbol : String, optionType : String, expirationDate : String, contractSize : Double) -> OptionData {
+        return OptionData(type: optionType, expirationDate: expirationDate, strike: strickPrice, lastPrice: lastPrice, bid: bid, ask: ask, change: change, changePercent: changePercent, impliedVolatility: impliedVolatility, delta: delta, gamma: gamma, theta: theta, vega: vega, rho: rho, theoretical: theoretical, intrinsicValue: intrinsicValue, daysBeforeExpiration: daysBeforeExpiration, stockSymbol: stockSymbol, contractSize: contractSize, payedAsk: askPrice)
+    }
+    
+    var optionValuePL : Double {
+        let contractSize = contractSize ?? 1
+        return ((contractSize * (ask ?? 0)) - (contractSize * (payedAsk ?? 0))) * 100
+//        return ((((contractSize ?? 1) * (ask ?? 0))) - (((contractSize ?? 1) * (payedAsk ?? 0))))
+        
+    }
+    
+    
+    
 }
 
 

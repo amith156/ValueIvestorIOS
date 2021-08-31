@@ -25,6 +25,9 @@ class DeveloperPreview {
         
     }
     
+    let optionData = OptionData(type: "CALL", expirationDate: "2021-12-17", strike: 65, lastPrice: 81.02, bid: 83.55, ask: 86, change: 0.6, changePercent: 0.0075, impliedVolatility: 96.352, delta: 0.9649, gamma: 0.001, theta: -0.0254, vega: 0.0623, rho: 0.1198, theoretical: 84.775, intrinsicValue: 0, daysBeforeExpiration: 109, stockSymbol: "AAPL", contractSize: 2, payedAsk: 60)
+    
+    
     let etf1 = ETFModel(title: "SPY", value: "$700.4B", percentChange: 4.2)
     let etf2 = ETFModel(title: "QQQ", value: "$342.7B", percentChange: -3.7)
     let etf3 = ETFModel(title: "VIX", value: "$12.4B")

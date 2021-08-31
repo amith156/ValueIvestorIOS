@@ -27,6 +27,7 @@
 		589025C626D18752003919CC /* GetChartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589025C526D18752003919CC /* GetChartService.swift */; };
 		5899270A26CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5899270826CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld */; };
 		5899270C26CAB72200D2C857 /* PortfolioDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5899270B26CAB72200D2C857 /* PortfolioDataService.swift */; };
+		589F179926DD684B00C16EF4 /* OptionsRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589F179826DD684B00C16EF4 /* OptionsRowView.swift */; };
 		58C845A526C89B6300201590 /* PortfolioSettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C845A426C89B6300201590 /* PortfolioSettingView.swift */; };
 		58C845A726C89E3800201590 /* XMarkButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C845A626C89E3800201590 /* XMarkButtonView.swift */; };
 		58C946A326DCA56A00FDE92A /* PortfolioSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C946A226DCA56A00FDE92A /* PortfolioSettingsViewModel.swift */; };
@@ -88,6 +89,7 @@
 		589025C526D18752003919CC /* GetChartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetChartService.swift; sourceTree = "<group>"; };
 		5899270926CAB62C00D2C857 /* PortfolioContainer.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PortfolioContainer.xcdatamodel; sourceTree = "<group>"; };
 		5899270B26CAB72200D2C857 /* PortfolioDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioDataService.swift; sourceTree = "<group>"; };
+		589F179826DD684B00C16EF4 /* OptionsRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsRowView.swift; sourceTree = "<group>"; };
 		58C845A426C89B6300201590 /* PortfolioSettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSettingView.swift; sourceTree = "<group>"; };
 		58C845A626C89E3800201590 /* XMarkButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMarkButtonView.swift; sourceTree = "<group>"; };
 		58C946A226DCA56A00FDE92A /* PortfolioSettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortfolioSettingsViewModel.swift; sourceTree = "<group>"; };
@@ -162,6 +164,7 @@
 				58C845A426C89B6300201590 /* PortfolioSettingView.swift */,
 				58E162C026C016FE00D57F12 /* StockRowView.swift */,
 				586830E326C7C994002538D9 /* ETFStatRow.swift */,
+				589F179826DD684B00C16EF4 /* OptionsRowView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				589025C426D1778A003919CC /* GetChart.swift in Sources */,
 				5823163926C248BE006A2075 /* URLComponents.swift in Sources */,
 				5899270C26CAB72200D2C857 /* PortfolioDataService.swift in Sources */,
+				589F179926DD684B00C16EF4 /* OptionsRowView.swift in Sources */,
 				5899270A26CAB62C00D2C857 /* PortfolioContainer.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

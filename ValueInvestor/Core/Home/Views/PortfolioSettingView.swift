@@ -13,9 +13,9 @@ struct PortfolioSettingView: View {
     @State private var sharesQuantity: String = ""
     @State private var singleSharePrice : String = ""
     @State private var showSave: Bool = false
-    @State private var selectionPicker : String = "Stocks"
     
-    @State private var cllPutSelection : String = "CALL"
+    @State private var selectionPicker : String = "Stocks"
+    @State private var callPutSelection : String = "CALL"
     @State private var contractSize : Int = 1
     @State private var expirationDate : String = ""
     @State private var strickPrice : String = ""
@@ -214,11 +214,11 @@ extension PortfolioSettingView {
                 HStack {
                     Text("Option Type")
                     Spacer()
-                    Picker(selection: $cllPutSelection,
+                    Picker(selection: $callPutSelection,
                            label:
                             
                             HStack {
-                                Text(cllPutSelection)
+                                Text(callPutSelection)
                             }.foregroundColor(.blue),
                            
                            content: {
@@ -341,17 +341,67 @@ extension PortfolioSettingView {
             Image(systemName: "externaldrive.fill.badge.checkmark")
                 .opacity(showSave ? 1.0 : 0.0)
             Button(action: {
-                saveButtonPressedStock()
+                if selectionPicker == "Stocks" {
+                    saveButtonPressedStock()
+                } else {
+                    savedButtonPressedOptions()
+                }
+                
             }, label: {
                 Text("Save".uppercased())
                 
             })
-            .opacity((selectedStock != nil && selectedStock?.currentStockHoldings != Double(sharesQuantity)) ? 1.0 : 0.0)
+            .opacity(selectionPicker == "Stocks" ? (saveImageStockOpacity() ? 1.0 : 0.0) : (saveImageOptionsOpacity() ? 1.0 : 0.0) )
         }
         .font(.headline)
     }
     
+    func saveImageStockOpacity() -> Bool {
+        return (selectedStock != nil && selectionPicker == "Stocks" && (selectedStock?.currentStockHoldings != Double(sharesQuantity)) && singleSharePrice != "")
+    }
     
+    func saveImageOptionsOpacity() -> Bool {
+        return (selectedStock != nil && selectionPicker == "Options" && expirationDate != "" && strickPrice != "" && askPrice != "")
+    }
+    
+    func savedButtonPressedOptions() {
+        
+        guard let aksPriceNew =  Double(askPrice),
+              let strickPriceNew = Double(strickPrice),
+              let stockSymbolNew = selectedStock?.symbol else {
+            return
+        }
+        
+        portfolioSettingsViewModel.updateOptions(askPrice: aksPriceNew, strickPrice: strickPriceNew, stockSymbol: stockSymbolNew, optionType: callPutSelection, expirationDate: expirationDate, contractSize: Double(contractSize))
+        
+        
+        //        show Save Icon
+        withAnimation(.easeIn) {
+            showSave = true
+            unSelectStock()
+        }
+        
+        
+        //        hide save icon
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.1) {
+            withAnimation(.easeOut) {
+                showSave = false
+            }
+        }
+        
+        
+        //        dismis Keyboard
+        UIApplication.shared.endEditing()
+        
+        
+        
+    }
+    
+//    let strickPrice = Double(strickPrice),
+//    let stockSymbol = selectedStock?.symbol,
+//    let optionType = cllPutSelection,
+//    let expirationDate = expirationDate,
+//    let contractSize = Double(contractSize)
     
     private func saveButtonPressedStock() {
         
@@ -396,7 +446,7 @@ extension PortfolioSettingView {
     
     
     func resetOptionsData() {
-        cllPutSelection = "CALL"
+        callPutSelection = "CALL"
         contractSize = 1
         expirationDate = ""
         strickPrice = ""

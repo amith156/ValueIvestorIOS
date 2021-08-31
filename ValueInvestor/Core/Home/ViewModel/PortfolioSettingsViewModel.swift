@@ -17,7 +17,9 @@ class PortfolioSettingsViewModel : ObservableObject {
     @Published var specficAllCalls : [OptionData]? = nil
     @Published var specficAllPuts : [OptionData]? = nil
     
+    
     private var getOptionChainService : GetOptionChainService = GetOptionChainService()
+    private var portfolioDataService : PortfolioDataService = PortfolioDataService()
     private var cancellable = Set<AnyCancellable>()
     
     init() {
@@ -36,7 +38,9 @@ class PortfolioSettingsViewModel : ObservableObject {
         
     }
     
-    
+    func updateOptions(askPrice : Double, strickPrice : Double, stockSymbol : String, optionType : String, expirationDate : String, contractSize : Double) {
+        portfolioDataService.addOptions(askPrice: askPrice, strickPrice: strickPrice, stockSymbol: stockSymbol, optionType: optionType, expirationDate: expirationDate, contractSize: contractSize)
+    }
     
     func getOption(tickerSymbole : String) {
         getOptionChainService.getOptionData(tickerSymbol: tickerSymbole)
