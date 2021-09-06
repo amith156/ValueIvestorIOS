@@ -42,14 +42,14 @@ struct OptionsRowView_Previews: PreviewProvider {
 extension OptionsRowView {
     
     private var firstSection : some View {
-        VStack {
-            Text("\(getOptionData.stockSymbol?.uppercased() ?? "")")
+        VStack(alignment: .leading) {
+            Text("\(getOptionData.optionSymbol?.uppercased() ?? "")")
                 .font(.headline)
-                .padding(.leading, 6)
+//                .padding(.leading, 6)
                 .foregroundColor(Color.theme.accent)
             Text("\(getOptionData.expirationDate ?? "")")
                 .font(.caption)
-                .padding(.leading, 6)
+//                .padding(.leading, 6)
                 .foregroundColor(Color.theme.accent)
         }
         
@@ -57,7 +57,7 @@ extension OptionsRowView {
     
     private var secondSection : some View {
         HStack {
-            Text("\(Int(getOptionData.contractSize ?? 2))\(String(getOptionData.type?.first ?? "P") )")
+            Text("\(Int(getOptionData.contractQuantity ?? 5))\(String(getOptionData.type?.first ?? "P") )")
                 .font(.headline)
                 .padding(.leading, 6)
                 .foregroundColor(Color.theme.accent)
@@ -66,7 +66,7 @@ extension OptionsRowView {
     }
     
     private var thirdSection : some View {
-        VStack {
+        VStack(alignment: .trailing) {
             Text("\(getOptionData.optionValuePL.asCurrencyWith2Decimals())")
                 .font(.headline)
                 .padding(.leading, 6)
@@ -81,12 +81,12 @@ extension OptionsRowView {
     
     private var fourthSection : some View {
         VStack {
-            Text("\((getOptionData.ask ?? 0).asNumberString())")
+            Text("\(((getOptionData.ask ?? 0) * 100).asCurrencyWith2Decimals())")
                 .font(.headline)
-                .padding(.trailing, 6)
                 .foregroundColor(Color.theme.accent)
 
         }
+        .frame(width: UIScreen.main.bounds.width / 4, alignment: .trailing)
         
     }
     

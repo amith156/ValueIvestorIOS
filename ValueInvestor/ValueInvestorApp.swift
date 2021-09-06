@@ -11,6 +11,7 @@ import SwiftUI
 struct ValueInvestorApp: App {
     
     @StateObject private var stockHomeViewModel = StockHomeViewModel()
+    @StateObject private var portfolioSettingsViewModel = PortfolioSettingsViewModel()
     
     init() {
         UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor(Color.theme.accent)]
@@ -24,6 +25,7 @@ struct ValueInvestorApp: App {
                 StockHomeView().navigationBarHidden(true)
             }
             .environmentObject(stockHomeViewModel)
+            .environmentObject(portfolioSettingsViewModel)
             
             
         }

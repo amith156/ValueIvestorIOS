@@ -7,6 +7,6 @@
 
 import Foundation
 class ApiKey {
-    static let YahooFinanceKey : String = "b0abf0a6abmsh2edc2b1d192ece1p183d31jsnca7dd2c52119"
+    static let YahooFinanceKey : String = "c9ebe735b0msh5f2608e4e3af023p1a8335jsn8a907a5b3270"
     static let EODOptionsKey : String = "6117736006e9d1.33129629"
 }

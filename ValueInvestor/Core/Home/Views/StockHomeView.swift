@@ -12,9 +12,18 @@ struct StockHomeView: View {
     @State private var showPortfolio : Bool = false
     @State private var showPortfolioSettingsView : Bool = false // sheet view
     @EnvironmentObject private var stockHomeViewModel : StockHomeViewModel
+    @EnvironmentObject private var portfolioSettingsViewModel : PortfolioSettingsViewModel
+//    private var portfolioSettingsViewModel : PortfolioSettingsViewModel = PortfolioSettingsViewModel()
     
     @State private var selctedStock : Result? = nil
     @State private var showDetailView : Bool = false
+    
+    init() {
+//        _portfolioSettingsViewModel = StateObject(wrappedValue: PortfolioSettingsViewModel())
+//        _portfolioSettingsViewModel = ObservedObject(wrappedValue: PortfolioSettingsViewModel())
+        
+    }
+    
     
     
     var body: some View {
@@ -61,8 +70,11 @@ struct StockHomeView: View {
             }
             
         }
+//        .onAppear(perform: {
+//            portfolioSettingsViewModel.objectWillChange.send()
+//        })
         .background(
-        
+            
             NavigationLink(
                 destination: DetailLoadingView(result: $selctedStock),
                 isActive: $showDetailView,
@@ -73,6 +85,7 @@ struct StockHomeView: View {
         )
         
     }
+    
 }
 
 struct StockHomeView_Previews: PreviewProvider {
@@ -151,9 +164,12 @@ extension StockHomeView {
                     }
                 }
                 
-                Section(header: Text("Options").font(.title3)) {
+                Section(header: Text("Options \(portfolioSettingsViewModel.portfolioOptionData.count)").font(.title3)) {
                     
-//                    ForEach(portfolioSe, content: <#T##(_.Element) -> _#>)
+                    ForEach(portfolioSettingsViewModel.portfolioOptionData, id: \.strike) { option in
+                        
+                        OptionsRowView(getOptionData: option)
+                    }
                     
                     
                     

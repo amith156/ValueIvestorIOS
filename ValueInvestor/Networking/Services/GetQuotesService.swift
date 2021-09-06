@@ -16,7 +16,7 @@ class GetQuotesService {
     @Published var etfResult : [Result] = []
     @Published var getQuotes : GetQuotes = GetQuotes(quoteResponse: nil)
     
-    var watchList : String = "AMD,IBM,AAPL,GOOGL,FB,SNAP,AMZN,TSLA,PLTR,SPY,QQQ,GLD,ILTB,VEU"
+    var watchList : String = "AMD,IBM,AAPL,GOOGL,FB,SNAP,AMZN,TSLA,PLTR,PSTH,SPY,QQQ,GLD,ILTB,VEU"
     
     var getQuoteCancellables : AnyCancellable?
     

@@ -16,14 +16,14 @@ struct PortfolioSettingView: View {
     
     @State private var selectionPicker : String = "Stocks"
     @State private var callPutSelection : String = "CALL"
-    @State private var contractSize : Int = 1
+    @State private var contractQuantity : Int = 1
     @State private var expirationDate : String = ""
     @State private var strickPrice : String = ""
     @State private var askPrice : String = ""
     
     
     @EnvironmentObject private var stockHomeViemModel : StockHomeViewModel
-    @StateObject var portfolioSettingsViewModel : PortfolioSettingsViewModel = PortfolioSettingsViewModel()
+    @EnvironmentObject var portfolioSettingsViewModel : PortfolioSettingsViewModel
     
 //    init() {
 //        _portfolioSettingsViewModel = StateObject(wrappedValue: PortfolioSettingsViewModel(tickerSymbol: "AAPL"))
@@ -235,8 +235,8 @@ extension PortfolioSettingView {
                     Text("Contract Size : ")
                     Spacer()
                     
-                    Stepper(value: $contractSize, in: 1...100, step: 1) {
-                        Text("\(contractSize)")
+                    Stepper(value: $contractQuantity, in: 1...100, step: 1) {
+                        Text("\(contractQuantity)")
                     }
                 }
                 
@@ -277,13 +277,13 @@ extension PortfolioSettingView {
                             
                            })
                         .pickerStyle(MenuPickerStyle())
-                        .onReceive([self.expirationDate].publisher.first(), perform: { val in
-                            print("the val -----> \(val)")
-                            if let symbol = selectedStock?.symbol {
-                                portfolioSettingsViewModel.getOptionSpecfic(tickerSymbole: symbol, date: val)
-                            }
-                            
-                        })
+//                        .onReceive([self.expirationDate].publisher.first(), perform: { val in
+//                            print("the val -----> \(val)")
+//                            if let symbol = selectedStock?.symbol {
+//                                portfolioSettingsViewModel.getOptionSpecfic(tickerSymbole: symbol, date: val)
+//                            }
+//
+//                        })
                     
                 }
             }
@@ -366,14 +366,22 @@ extension PortfolioSettingView {
     
     func savedButtonPressedOptions() {
         
-        guard let aksPriceNew =  Double(askPrice),
+        guard let askPriceNew =  Double(askPrice),
               let strickPriceNew = Double(strickPrice),
               let stockSymbolNew = selectedStock?.symbol else {
             return
         }
         
-        portfolioSettingsViewModel.updateOptions(askPrice: aksPriceNew, strickPrice: strickPriceNew, stockSymbol: stockSymbolNew, optionType: callPutSelection, expirationDate: expirationDate, contractSize: Double(contractSize))
+        portfolioSettingsViewModel.updateOptions(askPrice: askPriceNew, strickPrice: strickPriceNew, stockSymbol: stockSymbolNew, optionType: callPutSelection, expirationDate: expirationDate, contractQuantity: Double(contractQuantity))
         
+        
+//        portfolioSettingsViewModel.getOptionSpecfic(tickerSymbole: stockSymbolNew, date: expirationDate)
+        portfolioSettingsViewModel.getOptionSpecfic(tickerSymbole: stockSymbolNew,
+                                                    date: expirationDate,
+                                                    askPrice: askPriceNew,
+                                                    strick: strickPriceNew,
+                                                    optionType: callPutSelection,
+                                                    contractQuantity: Double(contractQuantity))
         
         //        show Save Icon
         withAnimation(.easeIn) {
@@ -447,7 +455,7 @@ extension PortfolioSettingView {
     
     func resetOptionsData() {
         callPutSelection = "CALL"
-        contractSize = 1
+        contractQuantity = 1
         expirationDate = ""
         strickPrice = ""
         askPrice = ""

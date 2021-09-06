@@ -59,7 +59,14 @@ class NetworkManager {
         return URLSession.shared.dataTaskPublisher(for: url)
             .subscribe(on: DispatchQueue.global(qos: .default))
             .tryMap({ data in
-                try handleURLResponce(output: data, url: url)
+                var result : Data? = nil
+                do {
+                    try result = handleURLResponce(output: data, url: url)
+                } catch NetworkingError.badURLRequest(url: url) {
+                    print("oops!!!")
+                }
+                return result!
+                
             })
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()

@@ -60,21 +60,21 @@ class PortfolioDataService {
     }
     
     
-    func updateOptions(askPrice : Double, strickPrice : Double, stockSymbol : String, optionType : String, expirationDate : String, contractSize : Double) {
+    func updateOptions(askPrice : Double, strickPrice : Double, stockSymbol : String, optionType : String, expirationDate : String, contractQuantity : Double) {
         
         if let entity = optionsEntitySaved.first(where: { savedEntity -> Bool in
             return savedEntity.stockSymbol == stockSymbol
         }) {
             if askPrice > 0 {
 //                update(entity: entity, amount: amount, buyingPrice: buyingPrice)
-                updateOptions(entity: entity, askPrice: askPrice, strickPrice: strickPrice, stockSymbol: stockSymbol, optionType: optionType, expirationDate: expirationDate, contractSize: contractSize)
+                updateOptions(entity: entity, askPrice: askPrice, strickPrice: strickPrice, stockSymbol: stockSymbol, optionType: optionType, expirationDate: expirationDate, contractQuantity: contractQuantity)
             } else {
                 removeOptions(entity: entity)
             }
         }
         else {
 //            add(result: stock, amount: amount, buyingPrice: buyingPrice)
-            addOptions(askPrice: askPrice, strickPrice: strickPrice, stockSymbol: stockSymbol, optionType: optionType, expirationDate: expirationDate, contractSize: contractSize)
+            addOptions(askPrice: askPrice, strickPrice: strickPrice, stockSymbol: stockSymbol, optionType: optionType, expirationDate: expirationDate, contractQuantity: contractQuantity)
         }
         
         
@@ -92,7 +92,7 @@ class PortfolioDataService {
         
     }
     
-    func addOptions(askPrice : Double, strickPrice : Double, stockSymbol : String, optionType : String, expirationDate : String, contractSize : Double) {
+    func addOptions(askPrice : Double, strickPrice : Double, stockSymbol : String, optionType : String, expirationDate : String, contractQuantity : Double) {
         
         let entity = OptionsEntity(context: container.viewContext)
         entity.askPrice = askPrice
@@ -100,18 +100,18 @@ class PortfolioDataService {
         entity.stockSymbol = stockSymbol
         entity.optionType = optionType
         entity.expirationDate = expirationDate
-        entity.contractSize = contractSize
+        entity.contractQuantity = contractQuantity
         changesApplyOptions()
         
     }
     
-    func updateOptions(entity: OptionsEntity, askPrice : Double, strickPrice : Double, stockSymbol : String, optionType : String, expirationDate : String, contractSize : Double) {
+    func updateOptions(entity: OptionsEntity, askPrice : Double, strickPrice : Double, stockSymbol : String, optionType : String, expirationDate : String, contractQuantity : Double) {
         entity.askPrice = askPrice
         entity.strickPrice = strickPrice
         entity.stockSymbol = stockSymbol
         entity.optionType = optionType
         entity.expirationDate = expirationDate
-        entity.contractSize = contractSize
+        entity.contractQuantity = contractQuantity
         changesApplyOptions()
     }
     

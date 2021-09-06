@@ -13,9 +13,11 @@ class GetOptionChainService {
     @Published var optionData : GetOptionChain? = nil
     @Published var allExpirationDate : [String] = []
     
+    @Published var specficOptionChain : GetOptionChain? = nil
     @Published var specficDatum : Datum? = nil
     @Published var specficAllCalls : [OptionData]? = nil
     @Published var specficAllPuts : [OptionData]? = nil
+    @Published var newOptionDataForPortfolio : OptionData? = nil
     
     var optionChainSubscription : AnyCancellable?
     
@@ -65,7 +67,7 @@ class GetOptionChainService {
     
     
     
-    func getOptionDataSpecfic(tickerSymbol: String, date: String) {
+    func getOptionDataSpecfic(tickerSymbol: String, date: String, askPrice : Double, strick : Double, optionType: String, contractQuantity : Double) {
         
         let queryitems = [
             URLQueryItem(name: "api_token", value: ApiKey.EODOptionsKey),
@@ -85,10 +87,35 @@ class GetOptionChainService {
                 NetworkManager.handleCompletion(completion: completion)
             } receiveValue: { [weak self] recivedOptionChain in
                 
+                self?.specficOptionChain = recivedOptionChain
                 self?.specficDatum = recivedOptionChain.data?.first
                 self?.specficAllCalls = recivedOptionChain.data?.first?.options?.call
                 self?.specficAllPuts = recivedOptionChain.data?.first?.options?.put
                 
+                var optionData : OptionData? = nil
+                
+                if optionType == "CALL" {
+                    optionData = recivedOptionChain.data?.first?.options?.call?.first(where: { optionItem in
+                        optionItem.strike == strick
+                    })
+                } else if optionType == "PUT" {
+                    optionData = recivedOptionChain.data?.first?.options?.put?.first(where: { optionItem in
+                        optionItem.strike == strick
+                    })
+                }
+                print("yyyyyy----> \(optionData)")
+                guard let x = optionData else {
+                    return
+                }
+                
+                let newData = x.updateOptionData(askPrice: askPrice,
+                                   strickPrice: strick,
+                                   stockSymbol: tickerSymbol,
+                                   optionType: optionType,
+                                   expirationDate: date,
+                                   contractQuantity: contractQuantity)
+                print("xxxxxx----> \(newData)")
+                self?.newOptionDataForPortfolio = newData
                 self?.optionChainSubscription?.cancel()
             }
         

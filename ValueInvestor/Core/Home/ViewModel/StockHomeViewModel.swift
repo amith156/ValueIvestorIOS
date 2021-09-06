@@ -20,21 +20,38 @@ class StockHomeViewModel : ObservableObject {
         ETFModel(title: "Portfolio", value: "1.5M", percentChange: +42.3),
     ]
     
-    
+    @Published var portfolioOptionData : [OptionData] = []
     
     private let getQuotesService = GetQuotesService()
     private var cancellable = Set<AnyCancellable>()
     private let portfolioDataService = PortfolioDataService()
-//    private var getOptionChainService : GetOptionChainService
+    private var getOptionChainService : GetOptionChainService
     
     init() {
-//        self.getOptionChainService = GetOptionChainService(tickerSymbol: "")
+        self.getOptionChainService = GetOptionChainService()
         addSubscribers()
     }
     
     
     func addSubscribers() {
 
+        getOptionChainService.$newOptionDataForPortfolio
+            .sink { optionData in
+                
+                guard let data = optionData else {
+                    return
+                }
+                
+                self.portfolioOptionData.append(data)
+                print("option Count => \(self.portfolioOptionData.count)")
+            }
+            .store(in: &cancellable)
+        
+        
+        
+        
+        
+        
         $searchText
             .combineLatest(getQuotesService.$result)
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
