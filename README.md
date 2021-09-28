@@ -11,4 +11,6 @@ This app uses different IOS frameworks and principles like:
 -----------------
 ![Alt Text](value2.gif)
 
+![Alt Text](value3.gif)
+
 ![Alt Text](value1.gif)
