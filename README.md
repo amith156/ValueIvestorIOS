@@ -9,4 +9,6 @@ This app uses different IOS frameworks and principles like:
 - REST API (Yahoo Finance API & EOD Historical Data API)
 - Custom UI
 -----------------
+![Alt Text](value2.gif)
+
 ![Alt Text](value1.gif)
